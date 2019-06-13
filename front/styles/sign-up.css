@@ -1,0 +1,201 @@
+body{
+    font-family:Arial,san-serif;
+    font-size:15px;
+    line-height:1.5;
+    padding:0;
+    margin:0;
+    background-color:#f4f4f4;
+}
+
+/*global*/
+.container{
+     width:80%;
+     margin:auto;
+     overflow:hidden
+}
+
+.shadow{
+    background-color:#f0ffff;
+}
+
+/*header*/
+header{
+    background:#000080;
+    color:#ffff;
+    padding-top:30px;
+    min-height:70px;
+    border-top:#e8491d 10px solid;
+    border-bottom:#e8491d 10px solid;
+}
+
+header a{
+    color:#ffff;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:16px;
+}
+
+
+
+header ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+header li{
+    float:left;
+    padding: 0 20px 0 20px;
+
+}
+
+header li{
+    
+    display: inline;
+}
+
+header .branding{
+    float:left;   
+   
+   }
+   
+   header .branding{
+       margin:0;   
+      
+      }
+   
+   header nav{
+       float:right;   
+      
+      }
+   
+
+header .highlight, header .current a{
+    color:#e8491d;
+    font-weight:bold;   
+   
+   }
+
+header a:hover{
+    color:#cccccc;
+    font-weight: bold;
+}   
+
+
+
+*{box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text],input[type=number],input[type=tel],input[type=password] {
+  width: 100%;
+  height: 35px;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  
+ 
+  
+}
+
+input[type=text]:focus,input[type=number]:focus,input[type=tel]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.signupbtn {
+  width: 110px;
+  height: 35px;
+  color: white;
+  background-color: red;
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+  
+}
+.signupbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}  
+
+.for {
+  color:white;
+  background-color:navy;
+  }
+  
+  .par{
+      text-align:center;
+  }
+  
+  .signinbtn{
+      background-color: skyblue;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.7;
+  }
+  
+  
+  
+  
+
+
+footer{
+    padding:20px;
+    background-color:#000080;
+    color:#ffff;
+    text-align:center
+       
+}
+
+footer p{
+    background:#ff0000;
+    color:#ffff;
+    
+}
+
+@media(max-width:768px){
+  header .branding,
+  header nav,
+  header nav li{
+      float:none;
+      text-align:center;
+      width:100%;
+      
+  }
+  header nav a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .for {
+      overflow-x: auto;
+      display: block;
+  }
+
+  }
+
+ 
+

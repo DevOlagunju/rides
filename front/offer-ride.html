@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ride My Way | Offer Ride</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" media="screen" href="./styles/offer-ride.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <header>
+        <div class="container"> 
+            <div class="branding">
+                    <h1><span class="highlight">Ride My</span> Way</h1>
+
+                   
+            </div>
+            <nav>
+             
+        
+                <div class="headSection">
+                  <nav class="headerNav">
+                    <a class="burger-nav"></a>
+                    <ul>
+                      <li><a id="nameBar"></a></li>
+                      <li><a href="./userProfile.html">Dashboard</a></li>
+            
+     </header>
+    <form class="for"  id="registration-form">
+        <div class="container">
+         <h1>Offer ride</h1>
+         <p>Please Fill In This Form To Offer a ride</p>
+         <hr>
+
+         <label for="carname"><b>car Name</b></label>
+         <input type="text" placeholder="Enter car Name" id="carname" name="carname" required>
+         <label for="availableseat"><b>Available seats</b></label>
+         <input type="text" placeholder="Enter no of seat" id="seats" name="availableseat" required>
+         <label for="pickuplocation"><b>Pick-up Location</b></label>
+         <input type="text" placeholder="Enter pickup" id="location" name="pickuplocation" required>
+          <label for="contact number"><b>Contact Number</b></label>
+         <input type="tel" placeholder="Enter Number" id="number" name="contact number" required>
+         <label for="time"><b>Time</b></label>
+         <input type="number" placeholder="Enter Time" id="time" name="time" required>
+         <label for="destination"><b>Destination</b></label>
+         <input type="tel" placeholder="Enter destination" id="destination" name="destination" required>
+         <hr>
+         <button type="submit" id="registration-form" class="createbtn">submit</button>
+        </div>
+    </form>
+</body>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="./js/offerRide.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<footer>
+        <p>Ride My Way Carpooling inc copyright &copy;2019</p>
+    </footer>
+</html>
