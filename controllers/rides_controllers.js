@@ -5,24 +5,24 @@ import { validationResult } from "express-validator/check";
 
 
 export const createRide = (req, res) => {
-    
 
-    const { user_id, car_name, available_seats, location, phone_no, time, destination } = req.body
+
+    const { user_id, car_name, available_Seats, location, phone_no, time, destination } = req.body
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     } else {
         client.query('INSERT INTO rides (user_id, car_name, available_seats, location, phone_no, time, destination) VALUES ($1, $2, $3, $4, $5, $6, $7)RETURNING *',
-            [user_id, car_name, available_seats, location, phone_no, time, destination], (error, ride) => {
+            [user_id, car_name, available_Seats, location, phone_no, time, destination], (error, ride) => {
                 if (error) {
                     throw error
-                }else{
-                res.status(201).send({
-                    success: true,
-                    msg: "rideoffer added successfully",
-                    rideId: ride.rows[0].rideId,
-                })
-            }
+                } else {
+                    res.status(201).send({
+                        success: true,
+                        msg: "rideoffer added successfully",
+                        rideId: ride.rows[0].rideId,
+                    })
+                }
             });
     }
 }
@@ -31,7 +31,7 @@ export const createRide = (req, res) => {
 export const getRide = (req, res) => {
     const userId = parseInt(req.params.id)
     const rideId = parseInt(req.params.rideId)
-    console.log("=========>",req)
+    console.log("=========>", req)
     //const errors = validationResult(req);
     if (false) {
         res.status(422).json({ errors: errors.array() });

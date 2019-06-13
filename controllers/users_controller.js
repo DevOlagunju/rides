@@ -10,7 +10,7 @@ const saltRounds = 10;
 
 export const createUser = (req, res) => {
     const { first_name, last_name, email, phone_no, password } = req.body
-    console.log('----req:',req.body)
+    console.log('----req:', req.body)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
@@ -23,8 +23,7 @@ export const createUser = (req, res) => {
                         res.send({ err: error.detail })
                     }
                     else {
-                        jwt.sign({id: user.rows[0].id, first_name: user.rows[0].first_name, last_name: user.rows[0].last_name, email: user.rows[0].email,  phone_no: user.rows[0].phone_no, password: user.rows[0].password} ,process.env.SECKRET_KEY,{ expiresIn: "1h" }, (err, token) => 
-                        {
+                        jwt.sign({ id: user.rows[0].id, first_name: user.rows[0].first_name, last_name: user.rows[0].last_name, email: user.rows[0].email, phone_no: user.rows[0].phone_no, password: user.rows[0].password }, process.env.SECKRET_KEY, { expiresIn: "1h" }, (err, token) => {
                             if (err) {
                                 res.send({ msg: "Unable to encode token" });
                             } else {
@@ -46,31 +45,31 @@ export const createUser = (req, res) => {
 
 
 
-export const userLogin = (req,res) => {
+export const userLogin = (req, res) => {
     const { email, password } = req.body
     console.log('>>>>>>>>>>>>:', req.body)
-    client.query(`select * from users WHERE email = $1`,[email]
-        , (error, users,fields) => {
+    client.query(`select * from users WHERE email = $1`, [email]
+        , (error, users, fields) => {
             if (error) {
                 res.status(400).send({ success: false, error: error.message })
             }
-            console.log ('>>>>>>>>>>>>:', users)
+            console.log('>>>>>>>>>>>>:', users)
             const user = users.rows[0]
-            console.log ('>>>>>>>>>>>>:', user)
+            console.log('>>>>>>>>>>>>:', user)
             if (!user) {
                 res.send({
                     success: false,
                     msg: "Incorrect email or password"
                 })
             }
-            console.log("****",user)
-            bcrypt.compare(password, user.password,(err, response) =>{
+            console.log("****", user)
+            bcrypt.compare(password, user.password, (err, response) => {
                 console.log(response)
                 if (err) {
                     res.send({ success: false, error: error.message })
                 }
                 if (response === true) {
-                    jwt.sign({ id: user.id, email: user.email, password : user.password }, process.env.SECKRET_KEY,{ expiresIn: "1h" },(err, token)=> {
+                    jwt.sign({ id: user.id, email: user.email, password: user.password }, process.env.SECKRET_KEY, { expiresIn: "1h" }, (err, token) => {
                         console.log(token);
                         if (err) {
                             res.status(400).send({ success: false, error: error.message })
@@ -109,7 +108,7 @@ export const getUser = (req, res) => {
                     res.send(err);
                     console.Console(err);
                 } else {
-                    console.log('-------',user.rows[0]);
+                    console.log('-------', user.rows[0]);
                     res.status(200).send(user.rows[0]);
                 }
             }
