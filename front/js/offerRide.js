@@ -3,7 +3,7 @@ const firstname = localStorage.getItem("firstname");
 const token = localStorage.getItem('token');
 
 //preventing unauthorised users from accessing the page
-if(!token){
+if (!token) {
   window.location.href = './signin.html';
 }
 
@@ -19,7 +19,7 @@ const createRide = event => {
       Authorization: token
     },
     body: JSON.stringify({
-      user_id: userId,
+      user_id: 1,
       car_name: document.getElementById("carname").value,
       available_Seats: document.getElementById("seats").value,
       location: document.getElementById("location").value,
