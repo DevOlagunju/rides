@@ -16,11 +16,11 @@ logout.addEventListener('click', function () {
 });
 
 
-document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;
+document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
 
 //fetch request to render all user rides into the table
 const userId = localStorage.getItem("userId");
-fetch(`/users/${userId}/rides`, {
+fetch(`/rides`, {
   method: "GET",
   headers: {
     Authorization: token
@@ -31,14 +31,10 @@ fetch(`/users/${userId}/rides`, {
     const ridesTable = document.querySelector(".rideDetails");
     if (!data.length) {
       document.querySelector("#error-msg").innerHTML =
-        "You do not have any Ride Offer yet";
+        "No Available Ride Offer yet";
     } else {
       data.sort((a, b) => a.id - b.id);
       renderTableData(data, ridesTable);
-      
-      document.getElementById("ridesLength").innerHTML = `${
-        data.length
-      }`;
       
           }
   });
@@ -47,17 +43,16 @@ const renderTableData = (data, ridesTable) => {
   data.forEach(ride => {
     let rideRow = document.createElement("tr");
     rideRow.innerHTML = `<th scope="row">${ride.rideid}</th>
-                          <td>${ride.car_name}</td>
+                          <td>${ride.car_name
+                        }</td>
                           <td class="remove-second">${ride.available_seats}</td>
                           <td>${ride.location}</td>
                           <td>${ride.phone_no}</td>
                           <td>${ride.time}</td>
                           <td>${ride.destination}</td>
+                          <td><button onclick="window.location.href = 'view.html?rideid=${ride.rideid}';">request</button></td>
                            `;
-    ridesTable.append(rideRow); 
+    ridesTable.append(rideRow);
   });
 };
-
-
-
 

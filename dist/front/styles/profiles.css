@@ -4,8 +4,7 @@ body{
     line-height:1.5;
     padding:0;
     margin:0;
-    background-color:#000080;
-    width:100%
+    background-color:#f4f4f4;
 }
 
 /*global*/
@@ -27,7 +26,6 @@ header{
     min-height:70px;
     border-top:#e8491d 10px solid;
     border-bottom:#e8491d 10px solid;
-    width:100%;
 }
 
 header a{
@@ -82,80 +80,35 @@ header a:hover{
     font-weight: bold;
 }   
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    font-size:20px;
+  }
 
-input[type=text],input[type=number],input[type=tel],input[type=time] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    height: 15px;
-    display: block;
-    background: #f1f1f1;
+  
+  .title {
+    color: grey;
+    font-size: 18px;
   }
   
-  input[type=text]:focus,input[type=number]:focus,input[type=tel]:focus,input[type=time]:focus {
-    background-color: #ddd;
-    border: 2px solid red;
-  }  
-  
-
-.container {
-    padding: 16px;
-  }
-  
-  hr {
-    border: 1px solid #f1f1f1;
-    margin: 25px;
-    width:25%;
-  }
-  
-
-  .createbtn{
-    width:100%;
-}
-
-.container form {
-   
-    display :flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-   
-  }
-  
- 
-  .container form div  {
-     justify-content: center;
-     width:50%;   
- }
- 
- .container form div label{
-   /* float:left;  */
-   width: auto;
- }
- 
- 
-  
- 
- #registration-form{
-   width:100%;
- }
- 
- 
-
-.for {
-color:white;
-background-color:navy;
-}
-
-#nameBar{
-    background-color:red;
+  .btn {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
     color: white;
-    font-weight: bold;
-    padding:10px 10px;
-    width:30%;
-    justify-content: center;
-}  
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+
 
 footer{
     padding:20px;
@@ -171,18 +124,6 @@ footer p{
     
 }
 
-.signupbtn {
-    width: 100px;
-    height: 35px;
-    color: white;
-    background-color: red;
-    font-size: 25px;
-    font-family: "Times New Roman", Times, serif;
-    border-top-right-radius: 15px;
-    cursor: pointer;
-    
-  }
-
 @media(max-width:768px){
   header .branding,
   header nav,
@@ -192,19 +133,11 @@ footer p{
       width:100%;
       
   }
-
-  header nav #nameBar{
-      width:100%;
-      justify-content: center;
-     
-      
-  }
-
   header nav a {
       float: none;
-      display: inline;
+      display: block;
+      width: 100%;
       text-align: center;
-      justify-content: center;
     }
 
     .for {
@@ -215,6 +148,4 @@ footer p{
   }
 
  
-
-
 

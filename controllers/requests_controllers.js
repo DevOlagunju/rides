@@ -1,32 +1,96 @@
 
 import { validationResult } from "express-validator/check";
 
-
-
-
-export const createRequest = (req, res) => {
-    console.log('initial state', req.body)
-    const { ride_id, passenger_name, pickup_location, phone_no, time, destination } = req.body
-    const errors = validationResult(req);
-    console.log(">>>", req.body)
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
-    } else {
-        client.query('INSERT INTO requests (ride_id, passenger_name, pickup_location, phone_no, time, destination) VALUES ($1, $2, $3, $4, $5, $6)RETURNING *',
-            [ride_id, passenger_name, pickup_location, phone_no, time, destination], (error, request) => {
-                if (error) {
-                    res.send(error);
-                    console.log(">>>", error)
+export const createRequest=(req, res)=> {
+    const { userId } = req.decoded;
+    const { rideId, passenger_name,phone_no } = req.body;
+    client.query(`SELECT rideId,user_id,available_seats FROM rides WHERE rideId=${rideId}`, (err, resp) => {
+      let seats;
+      if (err) {
+        res.status(500).send({
+          code: 500,
+          message: 'Could not get the ride you are requesting to join.',
+        });
+      }
+      if (resp.rows.length) {
+        if (resp.rows[0].available_seats === 0) {
+          res.status(409).jsend.fail({
+            code: 409,
+            message: 'This ride is all booked. No more seats available',
+          });
+        } else {
+          seats = resp.rows[0].available_seats - 1;
+          client.query(`INSERT INTO requests ( ride_Id,usersId,passenger_name,phone_no,) VALUES (
+                 '${rideId}','${userId}','${ passenger_name}','${phone_no}')`, (error, response) => {
+            if (error) {
+              res.status(409).jsend.fail({
+                code: 409,
+                messsage: 'You cannot join the same ride twice.',
+              });
+            }
+            if (response) {
+              client.query(`UPDATE rides SET available_seats=${seats} WHERE rideId=${rideId}`, (anyError) => {
+                if (anyError) {
+                  res.status(500).jsend.error({
+                    code: 500,
+                    message: 'An error occured completing your request. Please try again.',
+                  });
                 } else {
-                    return res.status(201).send({
-                        success: true,
-                        msg: "request created successfully",
-                        requestId: request.rows[0].id
-                    })
+                  res.status(201).jsend.success({
+                    message: 'Your request to join the ride has been completed',
+                  });
                 }
-            });
-    }
-}
+              });
+            }
+          });
+        }
+      } else {
+        res.status(404).jsend.fail({
+          message: 'The ride you requested for does not exist',
+          code: 404,
+        });
+      }
+    });
+  }
+
+
+// export const createRequest = (req, res) => {
+//     //console.log('initial state', req.body)
+//     const { ride_id, passenger_name, phone_no } = req.body
+//     const errors = validationResult(req);
+//     //console.log(">>>", req.body)
+//     if (!errors.isEmpty()) {
+//         return res.status(422).json({ errors: errors.array() });
+//     } else {
+//         const available_seats = client.query('select available_seats from rides  where rideid=1', (error, request) => {
+//             if (error) {
+            
+//                 console.log("--->>>", error);
+//             }
+//         })
+//         const newSeats = available_seats;
+//         client.query(`UPDATE rides SET (available_seats) = ${newSeats}, SELECT(available_seats) FROM rides WHERE rideid=1`,  (error, request) => {
+//             if (error) {
+                
+//                 console.log(">>>", error);
+//             } 
+            
+//         })
+//         client.query('INSERT INTO requests (ride_id, passenger_name,phone_no) VALUES ($1, $2, $3)RETURNING *',
+//             [ride_id, passenger_name, phone_no], (error, request) => {
+//                 if (error) {
+//                     res.send(error);
+//                     console.log(">>>", error)
+//                 } else {
+//                     return res.status(201).send({
+//                         success: true,
+//                         msg: "request created successfully",
+//                         requestId: request.rows[0].requestid
+//                     })
+//                 }
+//             });
+//     }
+// }
 
 export const getAllRequest = (req, res) => {
     const rideId = parseInt(req.params.rideId)

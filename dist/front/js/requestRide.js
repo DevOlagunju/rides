@@ -1,4 +1,3 @@
-const userId = localStorage.getItem("userId");
 const firstname = localStorage.getItem("firstname");
 const token = localStorage.getItem('token');
 
@@ -8,32 +7,29 @@ if (!token) {
 }
 
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
-
-const createRideOffer = event => {
+const userId = localStorage.getItem("userId");
+const createRequest = event => {
   event.preventDefault();
 
-  fetch(`users/rides`, {
+  fetch(`rides/requests`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: token
     },
     body: JSON.stringify({
-      user_id: userId,
-      car_name: document.getElementById("carname").value,
-      available_Seats: document.getElementById("seats").value,
-      location: document.getElementById("location").value,
-      phone_no: document.getElementById("number").value,
-      time: document.getElementById("time").value,
-      destination: document.getElementById("destination").value
+      user_id:userId,
+      ride_id: document.getElementById("rideid").value,  
+      passenger_name: document.getElementById("passenger").value,
+      phone_no: document.getElementById("number").value
     })
 
   })
     .then(res => res.json())
     .then(data => {
       console.log(data) 
-      if (data.rideId) {
-        alert("ride created successfully!");
+      if (data.requestId) {
+        alert("request created successfully!");
         window.location.href = "./userprofile.html";
       } else if (data.msg) {
         toastr.error(data.msg);
@@ -48,7 +44,7 @@ const createRideOffer = event => {
 
 document
   .getElementById("registration-form")
-  .addEventListener("submit", createRideOffer);
+  .addEventListener("submit", createRequest);
 
 
 

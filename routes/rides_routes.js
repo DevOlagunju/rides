@@ -4,12 +4,20 @@ import {
   createRequest,
   getAllRequest
 } from "../controllers/requests_controllers";
+import {
+  getAllRide
+} from "../controllers/rides_controllers";
+
 import { check } from "express-validator/check";
 import { verifyToken } from "../middlewares/middleware";
 
 var router = express.Router()
+   
+  //endpoint to get all ride offers
+router.get("/", verifyToken, getAllRide);
 
-    
+
+  
   //endpoint to create a request for a rideoffer
 router.post('/requests',[
   check('phone_no', 'must be a valid mobile number').isMobilePhone()

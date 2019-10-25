@@ -49,7 +49,7 @@ export const userLogin = (req, res) => {
     const { email, password } = req.body
     console.log('>>>>>>>>>>>>:', req.body)
     client.query(`select * from users WHERE email = $1`, [email]
-        , (error, users, fields) => {
+        , (error, users) => {
             if (error) {
                 res.status(400).send({ success: false, error: error.message })
             }

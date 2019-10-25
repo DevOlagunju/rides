@@ -7,6 +7,7 @@ import { Client } from "pg";
 import { createUser, userLogin, getUser } from './controllers/users_controller';
 import { verifyToken } from './middlewares/middleware'
 
+
 dotenv.config();
 
 const app = express();
@@ -58,7 +59,7 @@ client
               rideId serial PRIMARY KEY,
               user_id INTEGER REFERENCES users(id),
               car_name VARCHAR NOT NULL,
-              available_seats VARCHAR NOT NULL,
+              available_seats INT NOT NULL,
               location VARCHAR NOT NULL,
               phone_no VARCHAR NOT NULL,
               time TIME NOT NULL,
@@ -73,11 +74,9 @@ client
                   `CREATE TABLE IF NOT EXISTS requests(
              requestId serial PRIMARY KEY,
              ride_id INTEGER REFERENCES rides(rideId),
-             passenger_name VARCHAR NOT NULL,
-             pickup_location VARCHAR NOT NULL, 
+             user_id INTEGER REFERENCES users(id),
+             passenger_name VARCHAR NOT NULL, 
              phone_no VARCHAR NOT NULL,
-             time TIME NOT NULL,
-             destination VARCHAR NOT NULL,
              status VARCHAR DEFAULT 'pending'
              )`,
                   (err, res) => {
@@ -114,6 +113,7 @@ app.post('/auth/signin', userLogin);
 
 //endpoint to get a user details
 app.get('/me', verifyToken, getUser);
+
 
 
 
