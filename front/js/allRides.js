@@ -1,26 +1,25 @@
 //getting items stored into local storage during login and registration
 const firstname = localStorage.getItem("firstname");
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
 //preventing unauthorised users from accessing the page
-if(!token){
-  window.location.href = './signin.html';
+if (!token) {
+  window.location.href = "./signin.html";
 }
 
 //handling logout
-const logout = document.getElementById('logout');
+const logout = document.getElementById("logout");
 
-logout.addEventListener('click', function () {
+logout.addEventListener("click", function() {
   localStorage.clear();
-  window.location.href = './sign-in.html';
+  window.location.href = "./sign-in.html";
 });
-
 
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
 
 //fetch request to render all user rides into the table
 const userId = localStorage.getItem("userId");
-fetch(`/rides`, {
+fetch(`/rides/${userId}`, {
   method: "GET",
   headers: {
     Authorization: token
@@ -35,16 +34,14 @@ fetch(`/rides`, {
     } else {
       data.sort((a, b) => a.id - b.id);
       renderTableData(data, ridesTable);
-      
-          }
+    }
   });
 
 const renderTableData = (data, ridesTable) => {
   data.forEach(ride => {
     let rideRow = document.createElement("tr");
     rideRow.innerHTML = `<th scope="row">${ride.rideid}</th>
-                          <td>${ride.car_name
-                        }</td>
+                          <td>${ride.car_name}</td>
                           <td class="remove-second">${ride.available_seats}</td>
                           <td>${ride.location}</td>
                           <td>${ride.phone_no}</td>
@@ -55,4 +52,3 @@ const renderTableData = (data, ridesTable) => {
     ridesTable.append(rideRow);
   });
 };
-

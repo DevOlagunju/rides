@@ -26,18 +26,16 @@ const createRequest = event => {
   })
     .then(res => res.json())
     .then(data => {
-      alert(data.message);
-      // console.log(data);
-      // if (data.requestId) {
-      //   alert("request created successfully!");
-      //   window.location.href = "./userprofile.html";
-      // } else if (data.msg) {
-      //   toastr.error(data.msg);
-      // } else {
-      //   data.errors.forEach(err => {
-      //     toastr.error(err.msg);
-      //   });
-      // }
+      //alert(data.message);
+      console.log(data);
+      if (data.message) {
+        alert(data.message);
+        window.location.href = "./userprofile.html";
+      } else {
+        data.code.forEach(err => {
+          toastr.error(err.code);
+        });
+      }
     })
     .catch(err => console.log("error occured", err));
 };
