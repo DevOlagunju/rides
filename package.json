@@ -4,13 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"npm run build && node dist/app.js",
-    "start-dev": "nodemon ./app.js --exec babel-node",
+    "start-dev": "npm run build && node dist/app.js",
+    "start": "nodemon ./app.js --exec babel-node",
     "test": "NODE_ENV=test mocha --compilers js:@babel/register",
     "build": "rm -rf ./dist && babel . --out-dir ./dist --ignore ./node_modules,./.heroku ./front && cp -r ./front ./dist",
     "serve": "node dist/app.js"
   },
-  "engines": {"node":"v10.15.0"},
+  "engines": {
+    "node": "v10.15.0"
+  },
   "author": "wib",
   "license": "ISC",
   "dependencies": {

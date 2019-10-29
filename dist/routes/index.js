@@ -11,8 +11,6 @@ var _users_routes = _interopRequireDefault(require("./users_routes"));
 
 var _rides_routes = _interopRequireDefault(require("./rides_routes"));
 
-var _requests_routes = _interopRequireDefault(require("./requests_routes"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var router = function router(app) {

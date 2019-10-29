@@ -28,7 +28,7 @@ router.post('/requests',[
   // router.get('/users/rides/:rideId/requests', verifyToken, getRequest);
   
   //endpoint to get all requests
-  router.get('/:rideId/requests', verifyToken, getAllRequest);
+  router.get('/requests', verifyToken, getAllRequest);
   
      
 

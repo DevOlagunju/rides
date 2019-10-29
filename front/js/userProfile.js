@@ -39,6 +39,25 @@ fetch(`/users/${userId}/rides`, {
       document.getElementById("ridesLength").innerHTML = `${
         data.length
       }`;
+
+      fetch(`/rides/requests`, {
+        method: "GET",
+        headers: {
+          Authorization: token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          const requestsTable = document.querySelector(".requestDetails");
+          if (!data.length) {
+            document.querySelector("#error-msg").innerHTML =
+              "You do not have any Request  yet";
+          } else {
+            data.sort((a, b) => a.id - b.id);
+            renderRequesteData(data, requestsTable);
+            
+                }
+        });
       
           }
   });
@@ -58,6 +77,17 @@ const renderTableData = (data, ridesTable) => {
   });
 };
 
+const renderRequesteData = (data, requestsTable) => {
+  data.forEach(request => {
+    let rideRow = document.createElement("tr");
+    rideRow.innerHTML = `<th scope="row">${request.rideid}</th>
+                          <td>${request.passenger_name}</td>
+                          <td>${request.phone_no}</td>
+                          <td>${request.status}</td>
+                           `;
+    requestsTable.append(rideRow); 
+  });
+};
 
 
 

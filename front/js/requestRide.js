@@ -1,9 +1,9 @@
 const firstname = localStorage.getItem("firstname");
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
 //preventing unauthorised users from accessing the page
 if (!token) {
-  window.location.href = './signin.html';
+  window.location.href = "./signin.html";
 }
 
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
@@ -18,24 +18,22 @@ const createRequest = event => {
       Authorization: token
     },
     body: JSON.stringify({
-      user_id:userId,
-      ride_id: document.getElementById("rideid").value,  
+      user_id: userId,
+      ride_id: document.getElementById("rideid").value,
       passenger_name: document.getElementById("passenger").value,
       phone_no: document.getElementById("number").value
     })
-
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data) 
-      if (data.requestId) {
-        alert("request created successfully!");
+      //alert(data.message);
+      console.log(data);
+      if (data.message) {
+        alert(data.message);
         window.location.href = "./userprofile.html";
-      } else if (data.msg) {
-        toastr.error(data.msg);
       } else {
-        data.errors.forEach(err => {
-          toastr.error(err.msg);
+        data.code.forEach(err => {
+          toastr.error(err.code);
         });
       }
     })
@@ -45,7 +43,3 @@ const createRequest = event => {
 document
   .getElementById("registration-form")
   .addEventListener("submit", createRequest);
-
-
-
-  
