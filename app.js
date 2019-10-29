@@ -4,9 +4,8 @@ import bodyParser from "body-parser";
 import { check } from "express-validator/check";
 import routes from "./routes";
 import { Client } from "pg";
-import { createUser, userLogin, getUser } from './controllers/users_controller';
-import { verifyToken } from './middlewares/middleware'
-
+import { createUser, userLogin, getUser } from "./controllers/users_controller";
+import { verifyToken } from "./middlewares/middleware";
 
 dotenv.config();
 
@@ -14,7 +13,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header(
     "Access-Control-Allow-Headers",
@@ -100,22 +99,28 @@ client
 
 routes(app);
 
-app.post('/auth/signup', [
-  check('first_name').isAlpha().withMessage('must be alphabets only').isLength({ min: 3, max: 20 }).withMessage('must be of 3 characters and above'),
-  check('email', 'must be a valid email').isEmail(),
-  check('phone_no', 'must be a valid mobile number').isMobilePhone(),
-  check('password')
-    .isLength({ min: 5 }).withMessage('minimum length of 5')
-], createUser);
+app.post(
+  "/auth/signup",
+  [
+    check("first_name")
+      .isAlpha()
+      .withMessage("must be alphabets only")
+      .isLength({ min: 3, max: 20 })
+      .withMessage("must be of 3 characters and above"),
+    check("email", "must be a valid email").isEmail(),
+    check("phone_no", "must be a valid mobile number").isMobilePhone(),
+    check("password")
+      .isLength({ min: 5 })
+      .withMessage("minimum length of 5")
+  ],
+  createUser
+);
 
 //endpoint to login already created user account
-app.post('/auth/signin', userLogin);
+app.post("/auth/signin", userLogin);
 
 //endpoint to get a user details
-app.get('/me', verifyToken, getUser);
-
-
-
+app.get("/me", verifyToken, getUser);
 
 app.listen(PORT, () => {
   console.log(`server statrted at https://localhost:${PORT}`);
