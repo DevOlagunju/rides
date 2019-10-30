@@ -19,19 +19,42 @@ var _check = require("express-validator/check");
 
 var _middleware = require("../middlewares/middleware.js");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var router = _express["default"].Router(); //endpoint to create a ride offer
 
+router.post(
+  "/rides",
+  [
+    (0, _check.check)(
+      "phone_no",
+      "must be a valid mobile number"
+    ).isMobilePhone()
+  ],
+  _middleware.verifyToken,
+  _rides_controllers.createRide
+); //endpoint to get all users
 
-router.post("/rides", [(0, _check.check)('phone_no', 'must be a valid mobile number').isMobilePhone()], _middleware.verifyToken, _rides_controllers.createRide); //endpoint to get all users
+router.get("/", _middleware.verifyToken, _users_controller.getAllUser); //endpoint to get a ride details
 
-router.get('/', _middleware.verifyToken, _users_controller.getAllUser); //endpoint to get a ride details
+router.get(
+  "/:id/rides/:rideId",
+  _middleware.verifyToken,
+  _rides_controllers.getRide
+); //endpoint to get all ride offers
 
-router.get("/:id/rides/:rideId", _middleware.verifyToken, _rides_controllers.getRide); //endpoint to get all ride offers
+router.get(
+  "/:id/rides",
+  _middleware.verifyToken,
+  _rides_controllers.getAllRideTwo
+); //endpoint to change status of request only accessible by admin
 
-router.get("/:id/rides", _middleware.verifyToken, _rides_controllers.getAllRideTwo); //endpoint to change status of request only accessible by admin
-
-router.put('/rides/:rideId/requests/:requestId', _middleware.verifyToken, _requests_controllers.acceptOrRejectRequest);
+router.put(
+  "/rides/:rideId/requests/:requestId",
+  _middleware.verifyToken,
+  _requests_controllers.acceptOrRejectRequest
+);
 var _default = router;
 exports["default"] = _default;

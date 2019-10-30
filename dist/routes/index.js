@@ -11,11 +11,13 @@ var _users_routes = _interopRequireDefault(require("./users_routes"));
 
 var _rides_routes = _interopRequireDefault(require("./rides_routes"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var router = function router(app) {
-  app.use('/users', _users_routes["default"]);
-  app.use('/rides', _rides_routes["default"]);
+  app.use("/users", _users_routes["default"]);
+  app.use("/rides", _rides_routes["default"]);
 };
 
 var _default = router;

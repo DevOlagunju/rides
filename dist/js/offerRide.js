@@ -2,10 +2,10 @@
 
 var userId = localStorage.getItem("userId");
 var firstname = localStorage.getItem("firstname");
-var token = localStorage.getItem('token'); //preventing unauthorised users from accessing the page
+var token = localStorage.getItem("token"); //preventing unauthorised users from accessing the page
 
 if (!token) {
-  window.location.href = './signin.html';
+  window.location.href = "./signin.html";
 }
 
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
@@ -27,24 +27,29 @@ var createRideOffer = function createRideOffer(event) {
       time: document.getElementById("time").value,
       destination: document.getElementById("destination").value
     })
-  }).then(function (res) {
-    return res.json();
-  }).then(function (data) {
-    console.log(data);
+  })
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+      console.log(data);
 
-    if (data.rideId) {
-      alert("ride created successfully!");
-      window.location.href = "./userprofile.html";
-    } else if (data.msg) {
-      toastr.error(data.msg);
-    } else {
-      data.errors.forEach(function (err) {
-        toastr.error(err.msg);
-      });
-    }
-  })["catch"](function (err) {
-    return console.log("error occured", err);
-  });
+      if (data.rideId) {
+        alert("ride created successfully!");
+        window.location.href = "./userprofile.html";
+      } else if (data.msg) {
+        toastr.error(data.msg);
+      } else {
+        data.errors.forEach(function(err) {
+          toastr.error(err.msg);
+        });
+      }
+    })
+    ["catch"](function(err) {
+      return console.log("error occured", err);
+    });
 };
 
-document.getElementById("registration-form").addEventListener("submit", createRideOffer);
+document
+  .getElementById("registration-form")
+  .addEventListener("submit", createRideOffer);

@@ -1,20 +1,19 @@
 //getting items stored into local storage during login and registration
 const firstname = localStorage.getItem("firstname");
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
 //preventing unauthorised users from accessing the page
-if(!token){
-  window.location.href = './signin.html';
+if (!token) {
+  window.location.href = "./signin.html";
 }
 
 //handling logout
-const logout = document.getElementById('logout');
+const logout = document.getElementById("logout");
 
-logout.addEventListener('click', function () {
+logout.addEventListener("click", function() {
   localStorage.clear();
-  window.location.href = './sign-in.html';
+  window.location.href = "./sign-in.html";
 });
-
 
 document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;
 
@@ -35,12 +34,10 @@ fetch(`/users/${userId}/rides`, {
     } else {
       data.sort((a, b) => a.id - b.id);
       renderTableData(data, ridesTable);
-      
-      document.getElementById("ridesLength").innerHTML = `${
-        data.length
-      }`;
 
-      fetch(`/rides/requests`, {
+      document.getElementById("ridesLength").innerHTML = `${data.length}`;
+
+      fetch(`/rides/requests/${userId}`, {
         method: "GET",
         headers: {
           Authorization: token
@@ -55,11 +52,9 @@ fetch(`/users/${userId}/rides`, {
           } else {
             data.sort((a, b) => a.id - b.id);
             renderRequesteData(data, requestsTable);
-            
-                }
-        });
-      
           }
+        });
+    }
   });
 
 const renderTableData = (data, ridesTable) => {
@@ -73,21 +68,41 @@ const renderTableData = (data, ridesTable) => {
                           <td>${ride.time}</td>
                           <td>${ride.destination}</td>
                            `;
-    ridesTable.append(rideRow); 
+    ridesTable.append(rideRow);
   });
 };
 
 const renderRequesteData = (data, requestsTable) => {
   data.forEach(request => {
     let rideRow = document.createElement("tr");
-    rideRow.innerHTML = `<th scope="row">${request.rideid}</th>
+    rideRow.innerHTML = `<th scope="row">${request.ride_id}</th>
                           <td>${request.passenger_name}</td>
                           <td>${request.phone_no}</td>
                           <td>${request.status}</td>
                            `;
-    requestsTable.append(rideRow); 
+    requestsTable.append(rideRow);
   });
 };
 
+// let fetchMyRequests = async () => {
+//   let res = await fetch(`/requests/${userId}`, {
+//     headers: {
+//       Authorization: token
+//     }
+//   });
 
+//   let data = await res.json();
 
+//   data.forEach(req => {
+//     let tr = `<tr>
+//                 <td>${req.requestid}</td>
+//                 <td>${req.passenger_name}</td>
+//                 <td>${req.phone_no}</td>
+//                 <td>${req.status}</td>
+//               </tr>`;
+
+//     requestDetails.appendChild(tr);
+//   });
+// };
+
+// fetchMyRequests();

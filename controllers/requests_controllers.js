@@ -123,6 +123,25 @@ export const getAllRequest = (req, res) => {
   }
 };
 
+export const getUserRideRequests = (req, res) => {
+  const user_id = parseInt(req.params.id);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(422).json({ errors: errors.array() });
+  } else {
+    client.query(
+      `SELECT * FROM requests where ride_id IN (SELECT rideid FROM rides WHERE user_id= ${user_id})`,
+      (err, requests) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(requests.rows);
+        }
+      }
+    );
+  }
+};
+
 export const acceptOrRejectRequest = (req, res) => {
   const requestId = parseInt(req.params.requestId);
   const rideId = parseInt(req.params.rideId);
