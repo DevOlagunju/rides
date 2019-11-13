@@ -47,7 +47,7 @@ fetch(`/users/${userId}/rides`, {
         .then(data => {
           const requestsTable = document.querySelector(".requestDetails");
           if (!data.length) {
-            document.querySelector("#error-msg").innerHTML =
+            document.querySelector("#error-msg2").innerHTML =
               "You do not have any Request  yet";
           } else {
             data.sort((a, b) => a.id - b.id);
@@ -67,7 +67,9 @@ const renderTableData = (data, ridesTable) => {
                           <td>${ride.phone_no}</td>
                           <td>${ride.time}</td>
                           <td>${ride.destination}</td>
-                           `;
+                          <td><a href="rides/edit/${ride.rideid}"><i class="fas fa-edit"></i></a></td>
+                          <td><a href="/delete/${ride.rideid}" ><i class="fas fa-trash-alt"></i></a></td>
+                          `;
     ridesTable.append(rideRow);
   });
 };
@@ -79,6 +81,7 @@ const renderRequesteData = (data, requestsTable) => {
                           <td>${request.passenger_name}</td>
                           <td>${request.phone_no}</td>
                           <td>${request.status}</td>
+
                            `;
     requestsTable.append(rideRow);
   });

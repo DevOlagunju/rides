@@ -7,7 +7,9 @@ import {
 } from "../controllers/requests_controllers";
 import {
   getAllRide,
-  getAvailableRides
+  getAvailableRides,
+  changeDestination,
+  deletes
 } from "../controllers/rides_controllers";
 
 import { check } from "express-validator/check";
@@ -28,6 +30,14 @@ router.post(
   verifyToken,
   createRequest
 );
+
+// //endpoint to get edit user ride request
+router.put("/edit/:id", verifyToken, changeDestination);
+
+
+// //endpoint to delete user ride request
+router.delete("/delete/:id", verifyToken, deletes);
+
 
 //endpoint to get a specific request details
 // router.get('/users/rides/:rideId/requests', verifyToken, getRequest);

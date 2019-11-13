@@ -179,6 +179,15 @@ header a:hover{
     font-weight: 600;
     color: red;
   }
+
+  #error-msg2{
+    font-size: 18px;
+    color: rgb(54, 54, 54);
+    width: 100%;
+    padding: 10px 0;
+    font-weight: 600;
+    color: red;
+  }
   
   .destinationh2 {
     margin: 20px 0;
