@@ -76,7 +76,7 @@ client
              user_id INTEGER REFERENCES users(id),
              passenger_name VARCHAR NOT NULL, 
              phone_no VARCHAR NOT NULL,
-             status VARCHAR DEFAULT 'pending'
+             status INTEGER DEFAULT 1
              )`,
                   (err, res) => {
                     if (err) {

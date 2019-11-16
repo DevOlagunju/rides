@@ -49,7 +49,9 @@ fetch(`/users/${userId}/rides`, {
           if (!data.length) {
             document.querySelector("#error-msg2").innerHTML =
               "You do not have any Request  yet";
+  
           } else {
+            
             data.sort((a, b) => a.id - b.id);
             renderRequesteData(data, requestsTable);
           }

@@ -23,7 +23,6 @@ export const createRequest = (req, res) => {
           });
         } else {
           seats = resp.rows[0].available_seats - 1;
-
           client.query(
             `INSERT INTO requests (ride_id,user_id,passenger_name,phone_no) VALUES (
                  '${ride_id}','${user_id}','${passenger_name}','${phone_no}')`,
