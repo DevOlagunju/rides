@@ -34,10 +34,8 @@ router.post(
 // //endpoint to get edit user ride request
 router.put("/edit/:id", verifyToken, changeDestination);
 
-
 // //endpoint to delete user ride request
-router.delete("/delete/:id", verifyToken, deletes);
-
+router.get("/delete/:id", verifyToken, deletes);
 
 //endpoint to get a specific request details
 // router.get('/users/rides/:rideId/requests', verifyToken, getRequest);

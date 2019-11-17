@@ -49,9 +49,7 @@ fetch(`/users/${userId}/rides`, {
           if (!data.length) {
             document.querySelector("#error-msg2").innerHTML =
               "You do not have any Request  yet";
-  
           } else {
-            
             data.sort((a, b) => a.id - b.id);
             renderRequesteData(data, requestsTable);
           }
@@ -69,11 +67,35 @@ const renderTableData = (data, ridesTable) => {
                           <td>${ride.phone_no}</td>
                           <td>${ride.time}</td>
                           <td>${ride.destination}</td>
-                          <td><a href="rides/edit/${ride.rideid}"><i class="fas fa-edit"></i></a></td>
-                          <td><a href="/delete/${ride.rideid}" ><i class="fas fa-trash-alt"></i></a></td>
+                          <td><a href="rides/edit/${ride.rideid}" onclick="editRide(${ride.rideid}); return false;"><i class="fas fa-edit"></i></a></td>
+                          <td><a href="rides/delete/${ride.rideid}" onclick="deleteRide(${ride.rideid}); return false;"><i class="fas fa-trash-alt"></i></a></td>
                           `;
     ridesTable.append(rideRow);
   });
+};
+
+const deleteRide = async id => {
+  let res = await fetch(`rides/delete/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+
+  console.log(res);
+
+  if (res.status === 200) {
+    window.location.reload();
+  }
+};
+
+const editRide = async id => {
+  let res = await fetch(`rides/edit/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+
+  console.log(res);
 };
 
 const renderRequesteData = (data, requestsTable) => {
@@ -111,3 +133,31 @@ const renderRequesteData = (data, requestsTable) => {
 // };
 
 // fetchMyRequests();
+
+//NEW
+
+// let edits = document.querySelector(".edit");
+
+// for (let i = 0; i < edits.length; i++) {
+//   edits[i].onclick = function(e) {
+//     return false;
+//   };
+// }
+
+// edit.onclick = evt => {
+//   evt.preventDefault();
+// };
+
+// edit.forEach(function() {
+//   this.onclick = e => {
+//     e.preventDefault();
+//     alert("Hello");
+//   };
+// });
+
+// fetch(`/rides/${userId}`, {
+//   method: "GET",
+//   headers: {
+//     Authorization: token
+//   }
+// });
