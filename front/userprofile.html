@@ -26,13 +26,24 @@
     />
   </head>
 
+
   <body>
+    <div class="overlay" id="overlay">
+    <div class="centerOverlay">
+      <form>
+        <label >change destination</label>
+        <input type="hidden" name="rideid">
+          <input type="text" id="destination" placeholder="Enter Destination" name="destination" required>
+          <button type="submit" >Save</button>
+      </form>
+    </div>
+    </div>
+    <div class="wrapper" >
     <header>
         <div class="container"> 
             <div class="branding">
                     <h1><span class="highlight">Ride My</span> Way</h1>
-
-                   
+ 
             </div>
             <nav>
              
@@ -108,7 +119,8 @@
   <footer>
     <p>Ride My Way Carpooling inc copyright &copy;2019</p>
 </footer>
-  
+</div>
+
   <script src="./js/userProfile.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </html>

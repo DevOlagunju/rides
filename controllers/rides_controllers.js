@@ -120,7 +120,9 @@ export const getAvailableRides = (req, res) => {
 };
 
 export const changeDestination = (req, res) => {
-  const { rideId, destination, user_id } = req.body;
+  //console.log("yoga");
+  //console.log(req.params.rideId)
+ const { rideId, destination, user_id } = req.body;
 
   console.log(`${destination} ${userId} ${user_id}`);
 

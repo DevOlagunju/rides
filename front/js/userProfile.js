@@ -67,8 +67,8 @@ const renderTableData = (data, ridesTable) => {
                           <td>${ride.phone_no}</td>
                           <td>${ride.time}</td>
                           <td>${ride.destination}</td>
-                          <td><a href="rides/edit/${ride.rideid}" onclick="editRide(${ride.rideid}); return false;"><i class="fas fa-edit"></i></a></td>
-                          <td><a href="rides/delete/${ride.rideid}" onclick="deleteRide(${ride.rideid}); return false;"><i class="fas fa-trash-alt"></i></a></td>
+                          <td><button  onclick="editRide(${ride.rideid});"><i class="fas fa-edit"></i></button</td>
+                          <td><a href="rides/delete/${ride.rideid}"  onclick="deleteRide(${ride.rideid}); return false;"><i class="fas fa-trash-alt"></i></a></td>
                           `;
     ridesTable.append(rideRow);
   });
@@ -87,15 +87,23 @@ const deleteRide = async id => {
     window.location.reload();
   }
 };
+let overlay = document.getElementById('overlay');
+overlay.onclick = function (evt) {
+  let target = evt.target;
+  let id = target.id;
+  
+  if (id && id === this.id){
+      this.style.display = 'none';
+  }
+}
 
-const editRide = async id => {
-  let res = await fetch(`rides/edit/${id}`, {
-    headers: {
-      Authorization: token
-    }
-  });
+const editRide = id => {
+  
+  this.onclick = () => {
+    overlay.style.display = 'block';
+}
 
-  console.log(res);
+ 
 };
 
 const renderRequesteData = (data, requestsTable) => {
