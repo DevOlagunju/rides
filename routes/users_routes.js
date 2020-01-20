@@ -14,11 +14,12 @@ router.post("/rides",
 [ check('phone_no', 'must be a valid mobile number').isMobilePhone()],
  verifyToken, createRide);
 
- //endpoint to get all users
+ //endpoint to get all usersl   
 router.get('/', verifyToken, getAllUser);
  
 //endpoint to get a ride details
 router.get("/:id/rides/:rideId", verifyToken, getRide);
+   
 
 //endpoint to get all ride offers
 router.get("/:id/rides", verifyToken, getAllRideTwo);
