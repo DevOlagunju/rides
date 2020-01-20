@@ -1,19 +1,19 @@
-import express from "express";
-import bodyParser from "body-parser";
-import {
+const  express = require("express");
+//import bodyParser from "body-parser";
+const {
   createRequest,
   getAllRequest,
   getUserRideRequests
-} from "../controllers/requests_controllers";
-import {
+} = require("../controllers/requests_controllers");
+const {
   getAllRide,
   getAvailableRides,
   changeDestination,
   deletes
-} from "../controllers/rides_controllers";
+} = require("../controllers/rides_controllers");
 
-import { check } from "express-validator/check";
-import { verifyToken } from "../middlewares/middleware";
+const { check } = require("express-validator/check");
+const { verifyToken }= require("../middlewares/middleware");
 
 var router = express.Router();
 
@@ -48,4 +48,4 @@ router.get("/requests", verifyToken, getAllRequest);
 //endpoint to get specific user ride request
 router.get("/requests/:id", verifyToken, getUserRideRequests);
 
-export default router;
+module.exports = router;

@@ -1,10 +1,10 @@
-import express from "express";
-import usersRoute from "./users_routes";
-import ridesRoute from "./rides_routes";
+//import express from "express";
+const usersRoute = require("./users_routes");
+const ridesRoute  = require("./rides_routes");
 
 const router = app => {
   app.use("/users", usersRoute);
   app.use("/rides", ridesRoute);
 };
 
-export default router;
+module.exports = router;

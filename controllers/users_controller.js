@@ -1,10 +1,10 @@
-import { validationResult } from "express-validator/check";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+const { validationResult }  = require("express-validator/check");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken"); 
 
 const saltRounds = 10;
 
-export const createUser = (req, res) => {
+exports.createUser = (req, res) => {
   const { first_name, last_name, email, phone_no, password } = req.body;
   console.log("----req:", req.body);
   const errors = validationResult(req);
@@ -51,7 +51,7 @@ export const createUser = (req, res) => {
   }
 };
 
-export const userLogin = (req, res) => {
+exports.userLogin = (req, res) => {
   const { email, password } = req.body;
   console.log(">>>>>>>>>>>>:", req.body);
   client.query(
@@ -100,7 +100,7 @@ export const userLogin = (req, res) => {
   );
 };
 
-export const getUser = (req, res) => {
+exports.getUser = (req, res) => {
   //const userId = parseInt(req.params.id)
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -121,7 +121,7 @@ export const getUser = (req, res) => {
   }
 };
 
-export const getAllUser = (req, res) => {
+exports.getAllUser = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.status(422).json({ errors: errors.array() });

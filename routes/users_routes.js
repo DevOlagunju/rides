@@ -1,11 +1,11 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { createRide, getAllRideTwo, getRide} from '../controllers/rides_controllers';
-import { getAllUser} from '../controllers/users_controller';
-import { acceptOrRejectRequest} from '../controllers/requests_controllers';
+const express = require('express');
+//import bodyParser from 'body-parser';
+const { createRide, getAllRideTwo, getRide} = require('../controllers/rides_controllers');
+const { getAllUser} = require('../controllers/users_controller');
+const { acceptOrRejectRequest} = require('../controllers/requests_controllers');
 
-import { check } from 'express-validator/check';
-import { verifyToken } from '../middlewares/middleware.js';
+const { check }  = require('express-validator/check');
+ const { verifyToken } = require('../middlewares/middleware.js');
 var router = express.Router()
 
 
@@ -28,4 +28,4 @@ router.get("/:id/rides", verifyToken, getAllRideTwo);
 router.put('/rides/:rideId/requests/:requestId', verifyToken, acceptOrRejectRequest)
    
 
-export default router;
+module.exports = router;

@@ -1,6 +1,6 @@
-import { validationResult } from "express-validator/check";
+const { validationResult } = require("express-validator/check");
 
-export const createRequest = (req, res) => {
+exports.createRequest = (req, res) => {
   // const { user_id } = req.decoded;
   const { user_id, ride_id, passenger_name, phone_no } = req.body;
 
@@ -103,7 +103,7 @@ export const createRequest = (req, res) => {
 //     }
 // }
 
-export const getAllRequest = (req, res) => {
+exports.getAllRequest = (req, res) => {
   const rideId = parseInt(req.params.rideId);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -122,7 +122,7 @@ export const getAllRequest = (req, res) => {
   }
 };
 
-export const getUserRideRequests = (req, res) => {
+exports.getUserRideRequests = (req, res) => {
   const user_id = parseInt(req.params.id);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -141,7 +141,7 @@ export const getUserRideRequests = (req, res) => {
   }
 };
 
-export const acceptOrRejectRequest = (req, res) => {
+exports.acceptOrRejectRequest = (req, res) => {
   const requestId = parseInt(req.params.requestId);
   const rideId = parseInt(req.params.rideId);
   const { status } = req.body;

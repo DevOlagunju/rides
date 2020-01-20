@@ -1,6 +1,6 @@
-import { validationResult } from "express-validator/check";
+const { validationResult }  = require("express-validator/check");
 
-export const createRide = (req, res) => {
+exports.createRide = (req, res) => {
   const {
     user_id,
     car_name,
@@ -44,7 +44,7 @@ export const createRide = (req, res) => {
   }
 };
 
-export const getRide = (req, res) => {
+exports.getRide = (req, res) => {
   const userId = parseInt(req.params.id);
   const rideId = parseInt(req.params.rideId);
   console.log("=========>", req);
@@ -65,7 +65,7 @@ export const getRide = (req, res) => {
   }
 };
 
-export const getAllRideTwo = (req, res) => {
+exports.getAllRideTwo = (req, res) => {
   const userId = parseInt(req.params.id);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -84,7 +84,7 @@ export const getAllRideTwo = (req, res) => {
   }
 };
 
-export const getAllRide = (req, res) => {
+exports.getAllRide = (req, res) => {
   //const userId = parseInt(req.params.id)
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -100,7 +100,7 @@ export const getAllRide = (req, res) => {
   }
 };
 
-export const getAvailableRides = (req, res) => {
+exports.getAvailableRides = (req, res) => {
   const userId = parseInt(req.params.id);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -119,7 +119,7 @@ export const getAvailableRides = (req, res) => {
   }
 };
 
-export const changeDestination = (req, res) => {
+exports.changeDestination = (req, res) => {
   //console.log("yoga");
   //console.log(req.params.rideId)
  const { rideId, destination, user_id } = req.body;
@@ -150,7 +150,7 @@ export const changeDestination = (req, res) => {
   }
 };
 
-export const deletes = (req, res) => {
+exports.deletes = (req, res) => {
   const rideId = parseInt(req.params.id);
   console.log(rideId);
   const errors = validationResult(req);

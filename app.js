@@ -1,11 +1,11 @@
-import dotenv from "dotenv";
-import express from "express";
-import bodyParser from "body-parser";
-import { check } from "express-validator/check";
-import routes from "./routes";
-import { Client } from "pg";
-import { createUser, userLogin, getUser } from "./controllers/users_controller";
-import { verifyToken } from "./middlewares/middleware";
+const dotenv = require("dotenv");
+const express = require("express");
+const bodyParser = require("body-parser");
+const { check } = require("express-validator/check");
+const routes  = require("./routes");
+const { Client } = require( "pg");
+const { createUser, userLogin, getUser } = require("./controllers/users_controller");
+const { verifyToken } =  require("./middlewares/middleware");
 
 dotenv.config();
 
@@ -126,4 +126,4 @@ app.listen(PORT, () => {
   console.log(`server statrted at https://localhost:${PORT}`);
 });
 
-export default app;
+module.exports = app;
