@@ -1,102 +1,25 @@
-body{
-    font-family:Arial,san-serif;
-    font-size:15px;
-    line-height:1.5;
-    padding:0;
-    margin:0;
-    background-color:#000080;
-}
-
-/*global*/
-.container{
-     width:80%;
-     margin:auto;
-     overflow:hidden
-}
-
-.shadow{
-    background-color:#f0ffff;
-}
-
-/*header*/
-header{
-    background:#000080;
-    color:#ffff;
-    padding-top:30px;
-    min-height:70px;
-    border-top:#e8491d 10px solid;
-    border-bottom:#e8491d 10px solid;
-}
-
-header a{
-    color:#ffff;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-size:16px;
-}
-
-
-
-header ul{
-    margin: 0px;
-    padding: 0px;
-}
-
-header li{
-    float:left;
-    padding: 0 20px 0 20px;
-
-}
-
-header li{
-    
-    display: inline;
-}
-
-header .branding{
-    float:left;   
-   
-   }
-   
-   header .branding{
-       margin:0;   
-      
-      }
-   
-   header nav{
-       float:right;   
-      
-      }
-   
-
-header .highlight, header .current a{
-    color:#e8491d;
-    font-weight:bold;   
-   
-   }
-
-header a:hover{
-    color:#cccccc;
-    font-weight: bold;
-}   
-
-
-
-*{box-sizing: border-box}
-
-/* Add padding to containers */
 .container {
-  padding: 16px;
+  border: 0px solid red;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 /* Full-width input fields */
 input[type=text],input[type=number],input[type=tel],input[type=password] {
+  
   width:100%;
   height: 35px;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 0 0;
   display:block;
   background: #f1f1f1;
+  
+}
+
+label{
   
 }
 
@@ -142,33 +65,48 @@ a {
 
 .for {
   color:white;
-  background-color:navy;
+  background-color:#353b48;
  
   }
 
-  .container{
-    margin:auto;
-    
-   }
-      
+  .intro{
+    background-color: #353b48;
+  }
   
- .container form {
-   
+  
+  .content{
+    height: 100%;
+    width:450px;
+    margin: auto;
+    border: 1px solid red;
+  }
+ .content form {
    display :flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
+ 
+  
   
   
  }
+
+ 
+ form h1{
+   padding-top: 50px;
+ }
+ 
+ .content h1,p{
+    margin: 20px 0px;
+ }
  
 
- .container form div  {
+ .content form div  {
     justify-content: center;
     width:50%;   
 }
 
-.container form div label{
+.content form div label{
   /* float:left;  */
   width: auto;
 }
@@ -178,6 +116,7 @@ a {
 
 #registration-form{
   width:100%;
+  height: 100%;
 }
 
   .par{
@@ -195,64 +134,130 @@ a {
       opacity: 0.7;
   }
   
-  
+  .main{
+   
+    border: 0;
+    border-top: 1px solid rgb(0, 0, 128, .4);;
+  }
   
   
 
-
-footer{
-    padding:20px;
-    background-color:#000080;
-    color:#ffff;
-    text-align:center
-       
-}
-
-footer p{
-    background:#ff0000;
-    color:#ffff;
+  .footer {
+    background-color: #7c4945 ;
+    border-top: 0px solid red;
+    height: 40px;
     
-}
-
-@media(max-width:768px){
+  }
   
-  header ul{
-    margin:0px;
-    padding: 0px;
-}
+  .footer p{
+      border: 1px solid rgba(255, 255, 255. .4);
+      display: flex;
+      color:white;
+      justify-content: center;
+      margin: 8px 0 0 0;
+      height: 20px;
+      padding:11px 0;
+      background-color: #353b48;
+      align-items: center;
+  }
 
-header li{
-    float:left;
-    padding: 0 9px 0 9px;
 
-}
+  @media screen and (max-width: 1024px) {
+    .intro{
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .header a:last-child {
+      margin-right: 0;
+    }
 
+    .footer {
+      margin-bottom: 0;
+    }
+  }
 
-header li{
+  
+  
+
+  
+  @media screen and (max-width: 414px) {
+    .par{
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .terms{
+      font-size: 10px;
+      font-weight: bold;
+    }
     
-    display: inline;
-}
+    .intro {
+      background-repeat: no-repeat;
+      background-size: 100%  100%;
+      
+    }
+  
+    .header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 5px;
+      font-size: 10px;
+      padding: 0 18px;
+    }
+    .header > .logo > span > em {
+      font-size: 10px;
+    }
+  
+    .header a {
+      margin-right: 7px;
+    }
 
-header .branding{
-    float:left;   
-   
-   }
-   
-   header .branding{
-       margin:0;   
+    .footer p{
+        
+      padding:3px 0;
+      font-size: 8px;
+      font-weight: bold;
       
-      }
+  }
+
+
+  }
+
+  @media only screen and (max-width: 360px) and (min-width: 320px) {
+    .header {
+      padding: 5px;
+    
+    }
+    
+    .par{
+      font-size: 8px;
+      font-weight: bold;
+    }
+
+    .terms{
+      font-size: 10px;
+      font-weight: bold;
+    }
    
-   header nav{
-       float:right;   
+    .footer p{
+        
       
-      }
+      font-size: 5px;
+      font-weight: bold;
+      
+  }
+  } 
+  
+
+  
    
-      .for {
-        color:white;
-        background-color:navy;
-        text-align:left;
-        }
-    } 
+
+ 
+
+
+
+
+
 
 

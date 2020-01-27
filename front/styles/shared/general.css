@@ -1,0 +1,80 @@
+body {
+  color: #605e5c;
+  /* font-family: "Roboto", sans-serif !important; */
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 14px;
+  font-weight: 200;
+  overflow-x: hidden;
+}
+
+.container {
+  border: 0px solid red;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.header,
+.footer {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.header,
+.footer {
+  border: 0;
+}
+
+.header {
+  align-items: center;
+  /* border-top:#e8491d 3px solid;
+    border-bottom: 3px solid #e8491d; */
+  background-color: #353b48;
+  color: white;
+  display: flex;
+  /* font-family: 'Bowlby One SC', cursive; */
+  height: 50px;
+  justify-content: space-between;
+  
+}
+
+.header a {
+  text-transform: uppercase;
+  font-size: 13px;
+  text-decoration: none;
+  margin-right: 30px;
+  color: white;
+}
+
+.header a:last-child {
+  margin-right: 0;
+}
+
+header a:hover {
+  color: #cccccc;
+  font-weight: bold;
+}
+
+.header > .logo > span > em {
+  color: #e84118;
+  font-size: 23px;
+  /* font-family: 'Bowlby One SC', cursive; */
+  margin-right: 5px;
+}
+
+.header > .nav > a.current {
+  color: #e84118;
+  font-weight: bold;
+}
+
+.main {
+  /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #000080; */
+  border: 1px solid rgb(0, 0, 128, .4);
+  flex: 1;
+}
