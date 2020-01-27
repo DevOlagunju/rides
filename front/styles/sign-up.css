@@ -1,43 +1,32 @@
-.container {
-  border: 0px solid red;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-
 /* Full-width input fields */
-input[type=text],input[type=number],input[type=tel],input[type=password] {
-  
-  width:100%;
+input[type=text],
+input[type=number],
+input[type=tel],
+input[type=password] {
+
+  width: 100%;
   height: 35px;
   padding: 15px;
   margin: 5px 0 0 0;
-  display:block;
+  display: block;
   background: #f1f1f1;
-  
+
 }
 
-label{
-  
-}
-
-
-
-
-
-input[type=text]:focus,input[type=number]:focus,input[type=tel]:focus, input[type=password]:focus {
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=tel]:focus,
+input[type=password]:focus {
   background-color: #ddd;
   border: 2px solid red;
- 
+
 }
 
 /* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
-  width:25%;
+  width: 25%;
 }
 
 /* Set a style for the submit/register button */
@@ -50,214 +39,201 @@ hr {
   font-family: "Times New Roman", Times, serif;
   border-top-right-radius: 15px;
   cursor: pointer;
-  
-}
-.signupbtn:hover {
-  opacity:1;
+
 }
 
+.signupbtn:hover {
+  opacity: 1;
+}
 
 
 /* Add a blue text color to links */
 a {
   color: dodgerblue;
-}  
-
-.for {
-  color:white;
-  background-color:#353b48;
- 
-  }
-
-  .intro{
-    background-color: #353b48;
-  }
-  
-  
-  .content{
-    height: 100%;
-    width:450px;
-    margin: auto;
-    border: 1px solid red;
-  }
- .content form {
-   display :flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
- 
-  
-  
-  
- }
-
- 
- form h1{
-   padding-top: 50px;
- }
- 
- .content h1,p{
-    margin: 20px 0px;
- }
- 
-
- .content form div  {
-    justify-content: center;
-    width:50%;   
 }
 
-.content form div label{
+.for {
+  color: white;
+  background-color: #353b48;
+
+}
+
+.intro {
+  background-color: #353b48;
+  height: 100%;
+}
+
+
+.content {
+  height: 100%;
+  width: 450px;
+  margin: auto;
+  border: 0px solid red;
+}
+
+.content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0px solid #09f;
+  padding: 0 10px;
+}
+
+
+.content .form_row {
+  margin-top: 20px;
+  width: 100%;
+}
+
+
+form h1 {
+  padding-top: 50px;
+}
+
+.content h1,
+p {
+  margin: 20px 0px;
+}
+
+
+.content form div {
+  justify-content: center;
+  width: 50%;
+}
+
+.content form div label {
   /* float:left;  */
   width: auto;
 }
 
 
- 
 
-#registration-form{
-  width:100%;
+
+#registration-form {
+  width: 100%;
   height: 100%;
 }
 
-  .par{
-      text-align:center;
+.par {
+  text-align: center;
+}
+
+.signinbtn {
+  background-color: skyblue;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.7;
+}
+
+
+.footer {
+  background-color: #7c4945;
+
+}
+
+.footer p {
+  border: 1px solid rgba(255, 255, 255. .4);
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin: 8px 0 0 0;
+  height: 20px;
+  padding: 11px 0;
+  background-color: #353b48;
+  align-items: center;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .intro {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
-  
-  .signinbtn{
-      background-color: skyblue;
-      color: white;
-      padding: 16px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      opacity: 0.7;
+
+  .header a:last-child {
+    margin-right: 0;
   }
-  
-  .main{
-   
-    border: 0;
-    border-top: 1px solid rgb(0, 0, 128, .4);;
-  }
-  
-  
 
   .footer {
-    background-color: #7c4945 ;
-    border-top: 0px solid red;
-    height: 40px;
-    
+    margin-bottom: 0;
   }
-  
-  .footer p{
-      border: 1px solid rgba(255, 255, 255. .4);
-      display: flex;
-      color:white;
-      justify-content: center;
-      margin: 8px 0 0 0;
-      height: 20px;
-      padding:11px 0;
-      background-color: #353b48;
-      align-items: center;
+}
+
+
+
+
+
+@media screen and (max-width: 414px) {
+  .par {
+    font-size: 10px;
+    font-weight: bold;
   }
 
-
-  @media screen and (max-width: 1024px) {
-    .intro{
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
-    .header a:last-child {
-      margin-right: 0;
-    }
-
-    .footer {
-      margin-bottom: 0;
-    }
+  .terms {
+    font-size: 10px;
+    font-weight: bold;
   }
 
-  
-  
-
-  
-  @media screen and (max-width: 414px) {
-    .par{
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    .terms{
-      font-size: 10px;
-      font-weight: bold;
-    }
-    
-    .intro {
-      background-repeat: no-repeat;
-      background-size: 100%  100%;
-      
-    }
-  
-    .header {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      padding: 0px 5px;
-      font-size: 10px;
-      padding: 0 18px;
-    }
-    .header > .logo > span > em {
-      font-size: 10px;
-    }
-  
-    .header a {
-      margin-right: 7px;
-    }
-
-    .footer p{
-        
-      padding:3px 0;
-      font-size: 8px;
-      font-weight: bold;
-      
-  }
-
+  .intro {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
   }
 
-  @media only screen and (max-width: 360px) and (min-width: 320px) {
-    .header {
-      padding: 5px;
-    
-    }
-    
-    .par{
-      font-size: 8px;
-      font-weight: bold;
-    }
-
-    .terms{
-      font-size: 10px;
-      font-weight: bold;
-    }
-   
-    .footer p{
-        
-      
-      font-size: 5px;
-      font-weight: bold;
-      
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5px;
+    font-size: 10px;
+    padding: 0 18px;
   }
-  } 
-  
 
-  
-   
+  .header>.logo>span>em {
+    font-size: 10px;
+  }
 
- 
+  .header a {
+    margin-right: 7px;
+  }
+
+  .footer p {
+
+    padding: 3px 0;
+    font-size: 8px;
+    font-weight: bold;
+
+  }
 
 
+}
+
+@media only screen and (max-width: 360px) and (min-width: 320px) {
+  .header {
+    padding: 5px;
+
+  }
+
+  .par {
+    font-size: 8px;
+    font-weight: bold;
+  }
+
+  .terms {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .footer p {
 
 
+    font-size: 5px;
+    font-weight: bold;
 
-
-
+  }
+}

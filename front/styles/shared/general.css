@@ -1,14 +1,20 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   color: #605e5c;
   /* font-family: "Roboto", sans-serif !important; */
   font-family: "Open Sans", sans-serif !important;
   font-size: 14px;
   font-weight: 200;
+  height: 100%;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
-  border: 0px solid red;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -36,7 +42,6 @@ body {
   /* font-family: 'Bowlby One SC', cursive; */
   height: 50px;
   justify-content: space-between;
-  
 }
 
 .header a {
@@ -51,19 +56,19 @@ body {
   margin-right: 0;
 }
 
-header a:hover {
+.header a:hover {
   color: #cccccc;
   font-weight: bold;
 }
 
-.header > .logo > span > em {
+.header>.logo>span>em {
   color: #e84118;
   font-size: 23px;
   /* font-family: 'Bowlby One SC', cursive; */
   margin-right: 5px;
 }
 
-.header > .nav > a.current {
+.header>.nav>a.current {
   color: #e84118;
   font-weight: bold;
 }
