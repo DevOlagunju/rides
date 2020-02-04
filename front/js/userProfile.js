@@ -110,6 +110,7 @@ const renderTableData = (data, ridesTable) => {
 
     let a = document.createElement('a');
     a.setAttribute("href", `rides/delete/${ride.rideid}`);
+
     a.onclick = function () {
       deleteRide(ride.rideid);
     }
