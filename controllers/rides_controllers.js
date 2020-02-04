@@ -1,4 +1,6 @@
-const { validationResult }  = require("express-validator/check");
+const {
+  validationResult
+} = require("express-validator/check");
 
 exports.createRide = (req, res) => {
   const {
@@ -12,7 +14,9 @@ exports.createRide = (req, res) => {
   } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+    return res.status(422).json({
+      errors: errors.array()
+    });
   } else if (req.decoded.id === parseInt(user_id, 10)) {
     client.query(
       "INSERT INTO rides (user_id, car_name, available_seats, location, phone_no, time, destination) VALUES ($1, $2, $3, $4, $5, $6, $7)RETURNING *",
@@ -40,7 +44,9 @@ exports.createRide = (req, res) => {
   } else {
     res
       .status(401)
-      .send({ msg: "Sorry you can not create ride for another User!" });
+      .send({
+        msg: "Sorry you can not create ride for another User!"
+      });
   }
 };
 
@@ -50,7 +56,9 @@ exports.getRide = (req, res) => {
   console.log("=========>", req);
   const errors = validationResult(req);
   if (!errors.isempty()) {
-    res.status(422).json({ errors: errors.array() });
+    res.status(422).json({
+      errors: errors.array()
+    });
   } else {
     client.query(
       `SELECT * FROM rides WHERE rideId = ${rideId} and user_id = ${userId}`,
@@ -69,7 +77,9 @@ exports.getAllRideTwo = (req, res) => {
   const userId = parseInt(req.params.id);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(422).json({ errors: errors.array() });
+    res.status(422).json({
+      errors: errors.array()
+    });
   } else {
     client.query(
       `SELECT * FROM rides WHERE user_id = ${userId}`,
@@ -88,7 +98,9 @@ exports.getAllRide = (req, res) => {
   //const userId = parseInt(req.params.id)
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(422).json({ errors: errors.array() });
+    res.status(422).json({
+      errors: errors.array()
+    });
   } else {
     client.query(`SELECT * FROM rides`, (err, rides) => {
       if (err) {
@@ -104,7 +116,9 @@ exports.getAvailableRides = (req, res) => {
   const userId = parseInt(req.params.id);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(422).json({ errors: errors.array() });
+    res.status(422).json({
+      errors: errors.array()
+    });
   } else {
     client.query(
       `SELECT * FROM rides WHERE user_id != ${userId}`,
@@ -122,7 +136,11 @@ exports.getAvailableRides = (req, res) => {
 exports.changeDestination = (req, res) => {
   //console.log("yoga");
   //console.log(req.params.rideId)
- const { rideId, destination, user_id } = req.body;
+  const {
+    rideId,
+    destination,
+    user_id
+  } = req.body;
 
   console.log(`${destination} ${userId} ${user_id}`);
 
@@ -152,10 +170,11 @@ exports.changeDestination = (req, res) => {
 
 exports.deletes = (req, res) => {
   const rideId = parseInt(req.params.id);
-  console.log(rideId);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(422).json({ errors: errors.array() });
+    res.status(422).json({
+      errors: errors.array()
+    });
   } else {
     client.query(`DELETE FROM rides WHERE rideId = ${rideId}`, (err, rides) => {
       if (err) {

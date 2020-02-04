@@ -7,10 +7,24 @@ if (!token) {
   window.location.href = "./signin.html";
 }
 
+
+let overlay = document.getElementById('overlay');
+let editForm = document.getElementById('editForm');
+
+overlay.onclick = function (evt) {
+  let target = evt.target;
+
+
+  if (target.id === this.id) {
+    this.style.display = "none";
+    // this.style.display = 'none';
+  }
+}
+
 //handling logout
 const logout = document.getElementById("logout");
 
-logout.addEventListener("click", function() {
+logout.addEventListener("click", function () {
   localStorage.clear();
   window.location.href = "./sign-in.html";
 });
@@ -20,11 +34,11 @@ document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;
 //fetch request to render all user rides into the table
 const userId = localStorage.getItem("userId");
 fetch(`/users/${userId}/rides`, {
-  method: "GET",
-  headers: {
-    Authorization: token
-  }
-})
+    method: "GET",
+    headers: {
+      Authorization: token
+    }
+  })
   .then(res => res.json())
   .then(data => {
     const ridesTable = document.querySelector(".rideDetails");
@@ -38,11 +52,11 @@ fetch(`/users/${userId}/rides`, {
       document.getElementById("ridesLength").innerHTML = `${data.length}`;
 
       fetch(`/rides/requests/${userId}`, {
-        method: "GET",
-        headers: {
-          Authorization: token
-        }
-      })
+          method: "GET",
+          headers: {
+            Authorization: token
+          }
+        })
         .then(res => res.json())
         .then(data => {
           const requestsTable = document.querySelector(".requestDetails");
@@ -59,20 +73,85 @@ fetch(`/users/${userId}/rides`, {
 
 const renderTableData = (data, ridesTable) => {
   data.forEach(ride => {
-    let rideRow = document.createElement("tr");
-    rideRow.innerHTML = `<th scope="row">${ride.rideid}</th>
-                          <td>${ride.car_name}</td>
-                          <td class="remove-second">${ride.available_seats}</td>
-                          <td>${ride.location}</td>
-                          <td>${ride.phone_no}</td>
-                          <td>${ride.time}</td>
-                          <td>${ride.destination}</td>
-                          <td><button  onclick="editRide(${ride.rideid});"><i class="fas fa-edit"></i></button</td>
-                          <td><a href="rides/delete/${ride.rideid}"  onclick="deleteRide(${ride.rideid}); return false;"><i class="fas fa-trash-alt"></i></a></td>
-                          `;
-    ridesTable.append(rideRow);
+
+    let tr = document.createElement("tr");
+    let th = document.createElement("th");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
+    let td5 = document.createElement("td");
+    let td6 = document.createElement("td");
+    let td7 = document.createElement("td");
+    let td8 = document.createElement("td");
+
+
+    th.innerText = ride.rideid;
+    td1.innerText = ride.car_name;
+
+    td2.innerText = ride.available_seats;
+    td2.setAttribute("class", "remove-second");
+
+    td3.innerText = ride.location;
+    td4.innerText = ride.phone_no;
+    td5.innerText = ride.time;
+    td6.innerText = ride.destination;
+
+    let btn = document.createElement("button");
+    btn.onclick = function () {
+      editRide(ride.rideid);
+    }
+
+    let i1 = document.createElement("i");
+    i1.setAttribute("class", "fas fa-edit");
+    btn.appendChild(i1);
+
+    td7.appendChild(btn);
+
+
+    let a = document.createElement('a');
+    a.setAttribute("href", `rides/delete/${ride.rideid}`);
+    a.onclick = function () {
+      deleteRide(ride.rideid);
+    }
+
+    let i2 = document.createElement("i");
+    i2.setAttribute("class", "fas fa-trash-alt");
+
+    a.appendChild(i2);
+    td8.appendChild(a);
+
+    tr.appendChild(th);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tr.appendChild(td5);
+    tr.appendChild(td6);
+    tr.appendChild(td7);
+    tr.appendChild(td8);
+
+    ridesTable.appendChild(tr);
+
+
+    // let rideRow = document.createElement("tr");
+    // rideRow.innerHTML = `<th scope="row">${ride.rideid}</th>
+    //                       <td>${ride.car_name}</td>
+    //                       <td class="remove-second">${ride.available_seats}</td>
+    //                       <td>${ride.location}</td>
+    //                       <td>${ride.phone_no}</td>
+    //                       <td>${ride.time}</td>
+    //                       <td>${ride.destination}</td>
+    //                       <td><button  onclick="editRide(${ride.rideid});"><i class="fas fa-edit"></i></button</td>
+    //                       <td><a href="rides/delete/${ride.rideid}"  onclick="deleteRide(${ride.rideid}); return false;"><i class="fas fa-trash-alt"></i></a></td>
+    //                       `;
+    // ridesTable.append(rideRow);
   });
 };
+
+const editRide = function () {
+  overlay.style.display = 'block'
+}
 
 const deleteRide = async id => {
   let res = await fetch(`rides/delete/${id}`, {
@@ -87,24 +166,7 @@ const deleteRide = async id => {
     window.location.reload();
   }
 };
-let overlay = document.getElementById('overlay');
-overlay.onclick = function (evt) {
-  let target = evt.target;
-  let id = target.id;
-  
-  if (id && id === this.id){
-      this.style.display = 'none';
-  }
-}
 
-const editRide = id => {
-  
-  this.onclick = () => {
-    overlay.style.display = 'block';
-}
-
- 
-};
 
 const renderRequesteData = (data, requestsTable) => {
   data.forEach(request => {

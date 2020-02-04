@@ -1,78 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>User Profile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="./styles/userProfile.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-  </head>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>User Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles/userProfile.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+</head>
 
 
-  <body >
-    <div class="overlay" id="overlay">
+<body>
+  <div class="overlay" id="overlay">
     <div class="centerOverlay">
-      <form>
-        <label >change destination</label>
+      <form id="editForm">
+        <label>change destination</label>
         <input type="hidden" name="rideid">
-          <input type="text" id="destination" placeholder="Enter Destination" name="destination" required>
-          <button type="submit" >Save</button>
+        <input type="text" id="destination" placeholder="Enter Destination" name="destination" required>
+        <button type="submit">Save</button>
       </form>
     </div>
-    </div>
-    <div class="wrapper" >
+  </div>
+  <div class="wrapper">
     <header>
-        <div class="container"> 
-            <div class="branding">
-                    <h1><span class="highlight">Ride My</span> Way</h1>
- 
-            </div>
-            <nav>
-             
-        
-                <div class="headSection">
-                  <nav class="headerNav">
-                    <a class="burger-nav"></a>
-                    <ul>
-                      <li><a id="back"></a>WELCOME</li>
-                      <li><a id="nameBar"></a></li>
-                      <li><a href="./profile.html">Dashboard</a></li>
-                      <li><a href="index.html">Home</a></li>  
-                      <li><button id="logout">Logout</button></li>
-                    </ul>
-                  <nav>
-                </div>
-            
-          
-            
-            </nav>
-        
+      <div class="container">
+        <div class="branding">
+          <h1><span class="highlight">Ride My</span> Way</h1>
+
         </div>
-        <div>
-            
+        <nav>
+
+
+          <div class="headSection">
+            <nav class="headerNav">
+              <a class="burger-nav"></a>
+              <ul>
+                <li><a id="back"></a>WELCOME</li>
+                <li><a id="nameBar"></a></li>
+                <li><a href="./profile.html">Dashboard</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><button id="logout">Logout</button></li>
+              </ul>
+              <nav>
+          </div>
+
+
+
+        </nav>
+
+      </div>
+      <div>
+
     </header>
     <section class="banner">
       <div id="dashboard">
         <span><a href="./offer-ride.html" id="Link">Create Ride</a></span>
-          <a href="./ride-offers.html" id="Link">Request A ride</a>
+        <a href="./ride-offers.html" id="Link">Request A ride</a>
         <nav>
           <ul>
             <li>Number of Ride Given: <span id="ridesLength">0</span></li>
@@ -98,29 +86,30 @@
         <h1 id="error-msg"></h1>
 
         <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Passenger Name</th>
-                <th scope="col">Phone No</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody class="requestDetails">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Passenger Name</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody class="requestDetails">
 
-              
-            </tbody>
-          </table>
-          <h1 id="error-msg2"></h1>
+
+          </tbody>
+        </table>
+        <h1 id="error-msg2"></h1>
       </div>
     </section>
 
-      </body>
-  <footer>
-    <p>Ride My Way Carpooling inc copyright &copy;2019</p>
+</body>
+<footer>
+  <p>Ride My Way Carpooling inc copyright &copy;2019</p>
 </footer>
 </div>
 
-  <script src="./js/userProfile.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<script src="./js/userProfile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 </html>
