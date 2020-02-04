@@ -66,11 +66,7 @@ p{
   }
   
   @media screen and (max-width: 414px) {
-    .intro {
-      background-repeat: no-repeat;
-      background-size: 100%  100%;
-      
-    }
+   
   
     .header {
       align-items: center;

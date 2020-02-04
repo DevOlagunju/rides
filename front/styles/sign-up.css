@@ -149,23 +149,22 @@ p {
 }
 
 
-@media screen and (max-width: 1024px) {
-  .intro {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+@media screen and (max-width: 320px) {
+  
+  .header a {
+    margin-right: 5px;
+    font-size: 8px;
   }
 
-  .header a:last-child {
-    margin-right: 0;
+  .footer p {
+    margin: 5px 0;
+    padding: 3px 3px;
+    font-size: 5px;
+    font-weight: bold;
+    
   }
 
-  .footer {
-    margin-bottom: 0;
-  }
 }
-
-
-
 
 
 @media screen and (max-width: 414px) {
@@ -175,15 +174,16 @@ p {
   }
 
   .terms {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: bold;
   }
-
-  .intro {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-  }
+  
+  
+.content  {
+ 
+  width: 280px;
+}
+ 
 
   .header {
     align-items: center;
@@ -191,7 +191,7 @@ p {
     justify-content: space-between;
     padding: 0px 5px;
     font-size: 10px;
-    padding: 0 18px;
+    padding: 0 15px;
   }
 
   .header>.logo>span>em {
@@ -200,6 +200,7 @@ p {
 
   .header a {
     margin-right: 7px;
+    font-size: 12px;
   }
 
   .footer p {
@@ -213,27 +214,7 @@ p {
 
 }
 
-@media only screen and (max-width: 360px) and (min-width: 320px) {
-  .header {
-    padding: 5px;
-
-  }
-
-  .par {
-    font-size: 8px;
-    font-weight: bold;
-  }
-
-  .terms {
-    font-size: 10px;
-    font-weight: bold;
-  }
-
-  .footer p {
-
-
-    font-size: 5px;
-    font-weight: bold;
-
-  }
-}
+  
+  
+ 
+  
