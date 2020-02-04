@@ -85,7 +85,6 @@ const renderTableData = (data, ridesTable) => {
     let td7 = document.createElement("td");
     let td8 = document.createElement("td");
 
-
     th.innerText = ride.rideid;
     td1.innerText = ride.car_name;
 
