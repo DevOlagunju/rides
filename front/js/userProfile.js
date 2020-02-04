@@ -103,8 +103,8 @@ const renderTableData = (data, ridesTable) => {
 
     let i1 = document.createElement("i");
     i1.setAttribute("class", "fas fa-edit");
-    btn.appendChild(i1);
 
+    btn.appendChild(i1);
     td7.appendChild(btn);
 
 
