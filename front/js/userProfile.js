@@ -1,30 +1,51 @@
 //getting items stored into local storage during login and registration
 const firstname = localStorage.getItem("firstname");
 const token = localStorage.getItem("token");
+const userId = localStorage.getItem("userId");
 
 //preventing unauthorised users from accessing the page
 if (!token) {
   window.location.href = "./signin.html";
 }
 
+let overlay = document.getElementById("overlay");
+let editForm = document.getElementById("editForm");
 
-let overlay = document.getElementById('overlay');
-let editForm = document.getElementById('editForm');
-
-overlay.onclick = function (evt) {
+overlay.onclick = function(evt) {
   let target = evt.target;
-
 
   if (target.id === this.id) {
     this.style.display = "none";
     // this.style.display = 'none';
   }
-}
+};
+
+editForm.onsubmit = function(e) {
+  e.preventDefault();
+  let rideid = this.elements.rideid.value;
+  let destination = this.elements.destination.value;
+
+  fetch(`rides/edit/${rideid}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      destination: destination
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    });
+};
 
 //handling logout
 const logout = document.getElementById("logout");
 
-logout.addEventListener("click", function () {
+logout.addEventListener("click", function() {
   localStorage.clear();
   window.location.href = "./sign-in.html";
 });
@@ -32,13 +53,13 @@ logout.addEventListener("click", function () {
 document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;
 
 //fetch request to render all user rides into the table
-const userId = localStorage.getItem("userId");
+
 fetch(`/users/${userId}/rides`, {
-    method: "GET",
-    headers: {
-      Authorization: token
-    }
-  })
+  method: "GET",
+  headers: {
+    Authorization: token
+  }
+})
   .then(res => res.json())
   .then(data => {
     const ridesTable = document.querySelector(".rideDetails");
@@ -52,11 +73,11 @@ fetch(`/users/${userId}/rides`, {
       document.getElementById("ridesLength").innerHTML = `${data.length}`;
 
       fetch(`/rides/requests/${userId}`, {
-          method: "GET",
-          headers: {
-            Authorization: token
-          }
-        })
+        method: "GET",
+        headers: {
+          Authorization: token
+        }
+      })
         .then(res => res.json())
         .then(data => {
           const requestsTable = document.querySelector(".requestDetails");
@@ -73,7 +94,6 @@ fetch(`/users/${userId}/rides`, {
 
 const renderTableData = (data, ridesTable) => {
   data.forEach(ride => {
-
     let tr = document.createElement("tr");
     let th = document.createElement("th");
     let td1 = document.createElement("td");
@@ -97,9 +117,9 @@ const renderTableData = (data, ridesTable) => {
     td6.innerText = ride.destination;
 
     let btn = document.createElement("button");
-    btn.onclick = function () {
+    btn.onclick = function() {
       editRide(ride.rideid);
-    }
+    };
 
     let i1 = document.createElement("i");
     i1.setAttribute("class", "fas fa-edit");
@@ -107,13 +127,12 @@ const renderTableData = (data, ridesTable) => {
     btn.appendChild(i1);
     td7.appendChild(btn);
 
-
-    let a = document.createElement('a');
+    let a = document.createElement("a");
     a.setAttribute("href", `rides/delete/${ride.rideid}`);
 
-    a.onclick = function () {
+    a.onclick = function() {
       deleteRide(ride.rideid);
-    }
+    };
 
     let i2 = document.createElement("i");
     i2.setAttribute("class", "fas fa-trash-alt");
@@ -133,7 +152,6 @@ const renderTableData = (data, ridesTable) => {
 
     ridesTable.appendChild(tr);
 
-
     // let rideRow = document.createElement("tr");
     // rideRow.innerHTML = `<th scope="row">${ride.rideid}</th>
     //                       <td>${ride.car_name}</td>
@@ -149,9 +167,10 @@ const renderTableData = (data, ridesTable) => {
   });
 };
 
-const editRide = function () {
-  overlay.style.display = 'block'
-}
+const editRide = id => {
+  editForm.elements.rideid.value = id;
+  overlay.style.display = "block";
+};
 
 const deleteRide = async id => {
   let res = await fetch(`rides/delete/${id}`, {
@@ -166,7 +185,6 @@ const deleteRide = async id => {
     window.location.reload();
   }
 };
-
 
 const renderRequesteData = (data, requestsTable) => {
   data.forEach(request => {

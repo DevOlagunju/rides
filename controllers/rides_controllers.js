@@ -136,6 +136,8 @@ exports.getAvailableRides = (req, res) => {
 exports.changeDestination = (req, res) => {
   //console.log("yoga");
   //console.log(req.params.rideId)
+
+  console.log(req.body);
   const {
     rideId,
     destination,
@@ -164,7 +166,7 @@ exports.changeDestination = (req, res) => {
       }
     );
   } else {
-    res.send("Sorry! You can't change the destination for another user's ride");
+    res.send({msg:"Sorry! You can't change the destination for another user's ride"});
   }
 };
 
