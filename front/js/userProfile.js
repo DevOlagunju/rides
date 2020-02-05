@@ -2,6 +2,7 @@
 const firstname = localStorage.getItem("firstname");
 const token = localStorage.getItem("token");
 const userId = localStorage.getItem("userId");
+let dest_reporter = document.getElementById('dest_reporter');
 
 //preventing unauthorised users from accessing the page
 if (!token) {
@@ -11,7 +12,7 @@ if (!token) {
 let overlay = document.getElementById("overlay");
 let editForm = document.getElementById("editForm");
 
-overlay.onclick = function(evt) {
+overlay.onclick = function (evt) {
   let target = evt.target;
 
   if (target.id === this.id) {
@@ -20,32 +21,41 @@ overlay.onclick = function(evt) {
   }
 };
 
-editForm.onsubmit = function(e) {
+
+editForm.onsubmit = function (e) {
   e.preventDefault();
+  dest_reporter.classList.remove("success");
+
   let rideid = this.elements.rideid.value;
   let destination = this.elements.destination.value;
 
   fetch(`rides/edit/${rideid}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token
-    },
-    body: JSON.stringify({
-      user_id: userId,
-      destination: destination
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        destination: destination
+      })
     })
-  })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      dest_reporter.classList.add("success");
+      dest_reporter.innerText = data.msg;
+      dest_reporter.style.display = "block";
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     });
 };
 
 //handling logout
 const logout = document.getElementById("logout");
 
-logout.addEventListener("click", function() {
+logout.addEventListener("click", function () {
   localStorage.clear();
   window.location.href = "./sign-in.html";
 });
@@ -55,11 +65,11 @@ document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;
 //fetch request to render all user rides into the table
 
 fetch(`/users/${userId}/rides`, {
-  method: "GET",
-  headers: {
-    Authorization: token
-  }
-})
+    method: "GET",
+    headers: {
+      Authorization: token
+    }
+  })
   .then(res => res.json())
   .then(data => {
     const ridesTable = document.querySelector(".rideDetails");
@@ -73,11 +83,11 @@ fetch(`/users/${userId}/rides`, {
       document.getElementById("ridesLength").innerHTML = `${data.length}`;
 
       fetch(`/rides/requests/${userId}`, {
-        method: "GET",
-        headers: {
-          Authorization: token
-        }
-      })
+          method: "GET",
+          headers: {
+            Authorization: token
+          }
+        })
         .then(res => res.json())
         .then(data => {
           const requestsTable = document.querySelector(".requestDetails");
@@ -117,7 +127,8 @@ const renderTableData = (data, ridesTable) => {
     td6.innerText = ride.destination;
 
     let btn = document.createElement("button");
-    btn.onclick = function() {
+    btn.onclick = function () {
+      dest_reporter.style.display = "none";
       editRide(ride.rideid);
     };
 
@@ -130,7 +141,7 @@ const renderTableData = (data, ridesTable) => {
     let a = document.createElement("a");
     a.setAttribute("href", `rides/delete/${ride.rideid}`);
 
-    a.onclick = function() {
+    a.onclick = function () {
       deleteRide(ride.rideid);
     };
 

@@ -135,16 +135,11 @@ exports.getAvailableRides = (req, res) => {
 
 exports.changeDestination = (req, res) => {
   //console.log("yoga");
-  //console.log(req.params.rideId)
-
-  console.log(req.body);
+  const rideId = req.params.id;
   const {
-    rideId,
-    destination,
-    user_id
+    user_id,
+    destination
   } = req.body;
-
-  console.log(`${destination} ${userId} ${user_id}`);
 
   if (req.decoded.id === parseInt(user_id, 10)) {
     client.query(
@@ -166,7 +161,9 @@ exports.changeDestination = (req, res) => {
       }
     );
   } else {
-    res.send({msg:"Sorry! You can't change the destination for another user's ride"});
+    res.send({
+      msg: "Sorry! You can't change the destination for another user's ride"
+    });
   }
 };
 

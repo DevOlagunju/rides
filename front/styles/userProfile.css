@@ -195,6 +195,20 @@ table {
 }
 
 
+.dest_reporter {
+  display: none;
+  font-size: 14px;
+}
+
+.dest_reporter.success {
+  color: green;
+}
+
+.dest_reporter.error {
+  color: green;
+}
+
+
 
 .overlay {
   background: rgba(0, 0, 0, .5);
