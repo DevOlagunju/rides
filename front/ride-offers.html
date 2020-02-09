@@ -4,51 +4,65 @@
 <title>Ride My Way | Ride Offers</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<link rel="icon" type="image/png" href="image/favicon.png" sizes="16x16">
+<link rel="stylesheet" href="styles/reset.css" />
+<link rel="stylesheet" href="styles/shared/general.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="./styles/ride-offers.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+
 </head>
 <body>
-    <header>
-        <div class ="container"> 
-            <div class="branding">
-                    <h1><span class="highlight">Ride My</span> Way</h1>
-            </div>
-            <nav>
-             <ul>
-                 <li><a id="nameBar"></a></li>
-                 <li><a href="index.html">Home</a></li> 
-                 <li><a href="userprofile.html">Dashboard</a></li>
-                 <li><button id="logout">Logout</button></li>
-             </ul>
-            </nav>
+
+  <div class="container2">
+    <div class="header">
+      <div class="logo">
+        <span><em>RideMy</em>Way</span>
+      </div>
+      <div class="nav">
+          <a id="nameBar"></a>
+          <a href="/dashboard">Dashboard</a>
+          <button id="logout">Logout</button>
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="intro">
+        <div class="content">
+        <h2>Available Rides</h2>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Car</th>
+              <th scope="col">Seats</th>
+              <th scope="col">Location</th>
+              <th scope="col">Tel</th>
+              <th scope="col">Time</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Request</th>
+            </tr>
+          </thead>
+          <tbody class="rideDetails"></tbody>
+        </table>
+        <h1 id="error-msg"></h1>
+  
+    </div>
+      </div>
+    </div>
+    
+<div class="footer">
+  <p>Ride My Way Carpooling inc copyright &copy;2019</p>
+</div>
+    </div>
+
+    
+            
+            
+    
+ 
         
-        </div>
-            
-            
-    </header>
-    <center>
-    <div class="for"> 
-            <h2>Available Rides</h2>
-            </div>
-            <table class="for">
-              <tr>
-                <th>ID</th>
-                <th>Car</th>
-                <th>Seats</th>
-                <th>Location</th>
-                <th>Phone No</th>
-                <th>Time</th>
-                <th>Destination</th>
-              </tr>
-            </thead>
-            <tbody class="rideDetails"></tbody>
-          </table>
-          <h1 id="error-msg"></h1>
-            </table>
-          </center>
 </body>
-<footer>
-        <p>Ride My Way Carpooling inc copyright &copy;2019</p>
-    </footer>
     <script src="./js/allRides.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </html>

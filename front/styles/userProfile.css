@@ -3,104 +3,50 @@
   margin: 0;
 }
 
-body {
-  font-family: Arial, san-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  padding: 0;
-  margin: 0;
-  background-color: #f4f4f4;
-}
 
 
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden
-}
+
 
 .shadow {
   background-color: #f0ffff;
 }
 
-li {
-  list-style: none;
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
-a {
-  text-decoration: none;
-}
-
-
-/*header*/
-header {
-  background: #000080;
-  color: #ffff;
-  padding-top: 30px;
-  min-height: 70px;
-  border-top: #e8491d 10px solid;
-  border-bottom: #e8491d 10px solid;
-}
-
-header a {
-  color: #ffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 16px;
-}
-
-
-
-header ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-header li {
-  float: left;
-  padding: 0 20px 0 20px;
-
-}
-
-header li {
-
-  display: inline;
-}
-
-header .branding {
-  float: left;
-
-}
-
-header .branding {
-  margin: 0;
-
-}
-
-header nav {
-  float: right;
-
-}
-
-
-header .highlight,
+.header .highlight,
 header .current a {
   color: #e8491d;
   font-weight: bold;
 
 }
 
-header a:hover {
+.header a:hover {
   color: #cccccc;
   font-weight: bold;
 }
+
+/* .card ul{
+  display:block;
+  margin: 10px;
+}
+
+.card ul li{
+  margin-bottom:10px ;
+} */
 
 
 #logout {
   background-color: red;
   color: rgb(231, 231, 231);
   padding: 3px 12px;
-  font-size: 18px;
+  font-size: 10px;
+  width:65px;
   cursor: pointer;
   border-bottom: 3px solid gray;
   border-right: 3px solid gray;
@@ -117,20 +63,23 @@ header a:hover {
 #nameBar {
   background-color: red;
   color: white;
+  height: 25px;
   font-weight: bold;
+  padding: 2px;
 }
 
 .banner {
   width: 100%;
   text-align: center;
   padding: 20px;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #dashboard {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 #Link {
@@ -143,6 +92,8 @@ header a:hover {
   border-right: 3px solid gray;
   text-decoration: none;
 }
+
+
 
 .orderLink:hover {
   background-color: #555454;
@@ -160,7 +111,8 @@ header a:hover {
   padding: 5px;
   border: 1px dotted gray;
   border-radius: 10px;
-  margin-top: 15px;
+  margin-top: 100px;
+  margin-bottom: 0;
 }
 
 .banner nav li {
@@ -168,8 +120,18 @@ header a:hover {
   font-family: tahoma;
 }
 
-table {
-  margin-top: 30px;
+.intro {
+  background-color: #353b48;
+  height: 100%;
+}
+
+.table {
+  margin-top:130px;
+  font-size: 15px;
+}
+
+tbody{
+  color: white;
 }
 
 #error-msg {
@@ -256,39 +218,168 @@ button {
   background-color: red;
 }
 
-footer {
-  padding: 20px;
-  background-color: #000080;
-  color: #ffff;
-  text-align: center
+.footer {
+  background-color: #7c4945;
 }
 
-footer p {
-  background: #ff0000;
-  color: #ffff;
-
+.footer p {
+  border: 1px solid rgba(255, 255, 255 0.4);
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin: 8px 0 0 0;
+  margin-bottom: 0;
+  height: 20px;
+  padding: 11px 0;
+  background-color: #353b48;
+  align-items: center;
 }
 
 
-@media(max-width:768px) {
 
-  header .branding,
-  header nav,
-  header nav li {
-    text-align: center;
-    display: inline;
+/* .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+  padding: 5px;
+  font-family: arial;
+} */
+
+
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 360px) {
+  
+  
+  
+  #Link{ 
+  font-size: 15px;
+    
+  
+  }
+
+  #logout{
+    font-size: 3px;
+  }
+
+  .data{
+    display:none;
+  }
+
+  .footer p {
+    margin: 5px 0;
+    padding: 3px 3px;
+    font-size: 5px;
+    font-weight: bold;
+    
 
   }
 
-  header nav a {
-    text-align: center;
+  #logout{
+    font-size: 6px;
+    padding: 2px;
+    font-weight: bold;
   }
 
-
-  header li {
-    float: left;
-    padding: 0 6px 0 6px;
-    margin-bottom: 5px;
-
-  }
 }
+
+@media screen and (max-width: 375px) {
+  
+  .data{
+    display:none;
+  }
+
+  #logout{
+    font-size: 8px;
+    margin-right: 2px;
+    padding: 2px;
+    font-weight: bold;
+  }
+ 
+  .footer p {
+    margin: 5px 0;
+    padding: 3px 3px;
+    font-size: 5px;
+    font-weight: bold;
+    
+  }
+
+}
+
+
+@media screen and (max-width: 414px) {
+  .data {
+     display: none;
+    /* font-size: 8px; */
+  }
+
+  thead{
+    height: 50px;
+  }
+  
+  
+  
+.content  {
+ 
+  width: 280px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 5px;
+  font-size: 10px;
+  padding: 0 10px;
+}
+
+.header>.logo>span>em {
+  font-size: 10px;
+}
+
+.header a {
+  margin-right: 7px;
+  font-size: 12px;
+}
+
+.footer p {
+
+  padding: 3px 0;
+  font-size: 8px;
+  font-weight: bold;
+
+}
+
+}
+
+

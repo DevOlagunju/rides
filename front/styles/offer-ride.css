@@ -1,83 +1,17 @@
-body{
-    font-family:Arial,san-serif;
-    font-size:15px;
-    line-height:1.5;
-    padding:0;
-    margin:0;
-    background-color:#000080;
-    width:100%
-}
-
-/*global*/
-.container{
-     width:80%;
-     margin:auto;
-     overflow:hidden
-}
 
 .shadow{
     background-color:#f0ffff;
 }
 
 /*header*/
-header{
-    background:#000080;
-    color:#ffff;
-    padding-top:30px;
-    min-height:70px;
-    border-top:#e8491d 10px solid;
-    border-bottom:#e8491d 10px solid;
-    width:100%;
-}
 
-header a{
-    color:#ffff;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-size:16px;
-}
-
-
-
-header ul{
-    margin: 0px;
-    padding: 0px;
-}
-
-header li{
-    float:left;
-    padding: 0 20px 0 20px;
-
-}
-
-header li{
-    
-    display: inline;
-}
-
-header .branding{
-    float:left;   
-   
-   }
-   
-   header .branding{
-       margin:0;   
-      
-      }
-   
-   header nav{
-       float:right;   
-      
-      }
-   
-
-header .highlight, header .current a{
+.header .highlight, .current a{
     color:#e8491d;
     font-weight:bold;   
    
    }
 
-header a:hover{
+.header a:hover{
     color:#cccccc;
     font-weight: bold;
 }   
@@ -98,9 +32,7 @@ input[type=text],input[type=number],input[type=tel],input[type=time] {
   }  
   
 
-.container {
-    padding: 16px;
-  }
+
   
   hr {
     border: 1px solid #f1f1f1;
@@ -113,29 +45,6 @@ input[type=text],input[type=number],input[type=tel],input[type=time] {
     width:100%;
 }
 
-.container form {
-   
-    display :flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-   
-  }
-  
- 
-  .container form div  {
-     justify-content: center;
-     width:50%;   
- }
- 
- .container form div label{
-   /* float:left;  */
-   width: auto;
- }
- 
- 
-  
  
  #registration-form{
    width:100%;
@@ -148,28 +57,14 @@ color:white;
 background-color:navy;
 }
 
-#nameBar{
-    background-color:red;
-    color: white;
-    font-weight: bold;
-    padding:10px 10px;
-    width:30%;
-    justify-content: center;
-}  
-
-footer{
-    padding:20px;
-    background-color:#000080;
-    color:#ffff;
-    text-align:center
-       
+#nameBar {
+  background-color: red;
+  color: white;
+  height: 25px;
+  font-weight: bold;
+  padding: 2px;
 }
 
-footer p{
-    background:#ff0000;
-    color:#ffff;
-    
-}
 
 .signupbtn {
     width: 100px;
@@ -183,36 +78,136 @@ footer p{
     
   }
 
-@media(max-width:768px){
-  header .branding,
-  header nav,
-  header nav li{
-      float:none;
-      text-align:center;
-      width:100%;
-      
-  }
 
-  header nav #nameBar{
-      width:100%;
-      justify-content: center;
-     
-      
+  .content {
+    height: 100%;
+    width: 450px;
+    margin: auto;
+    border: 0px solid red;
+    color: white;
+    
   }
-
-  header nav a {
-      float: none;
-      display: inline;
-      text-align: center;
-      justify-content: center;
+  
+  .content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid #09f;
+    padding: 0 10px;
+  }
+  
+  .content .form_row {
+    margin-top: 20px;
+    width: 100%;
+  }
+   
+  .par{
+      margin-left:20px;
+  }
+  
+  .intro {
+      background-color: #353b48;
+      height: 100%;
+  }
+  
+  form h1 {
+    padding-top: 50px;
+  }
+  
+  .content h1,
+  p {
+    margin: 20px 0px;
+  }
+  
+  .content form div {
+    justify-content: center;
+    width: 50%;
+  }
+  
+  .content form div label {
+    /* float:left;  */
+    width: auto;
+  }
+  
+  .footer {
+    background-color: #7c4945;
+  }
+  
+  .footer p {
+    border: 1px solid rgba(255, 255, 255 0.4);
+    display: flex;
+    color: white;
+    justify-content: center;
+    margin: 8px 0 0 0;
+    height: 20px;
+    padding: 11px 0;
+    background-color: #353b48;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 320px) {
+  
+    .header a {
+      margin-right: 5px;
+      font-size: 8px;
     }
-
-    .for {
-      overflow-x: auto;
-      display: block;
+  
+    .footer p {
+      margin: 5px 0;
+      padding: 3px 3px;
+      font-size: 5px;
+      font-weight: bold;
+      
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 414px) {
+    .par {
+      font-size: 10px;
+      font-weight: bold;
+    }
+  
+    .terms {
+      font-size: 8px;
+      font-weight: bold;
+    }
+    
+    
+  .content  {
+   
+    width: 280px;
   }
 
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5px;
+    font-size: 10px;
+    padding: 0 15px;
   }
+
+  .header>.logo>span>em {
+    font-size: 10px;
+  }
+
+  .header a {
+    margin-right: 7px;
+    font-size: 12px;
+  }
+
+  .footer p {
+
+    padding: 3px 0;
+    font-size: 8px;
+    font-weight: bold;
+
+  }
+
+}
 
  
 

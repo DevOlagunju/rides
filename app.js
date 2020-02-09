@@ -1,21 +1,16 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
-const {
-  check
-} = require("express-validator/check");
+const { check } = require("express-validator/check");
 const routes = require("./routes");
-const {
-  Client
-} = require("pg");
+const { Client } = require("pg");
 const {
   createUser,
   userLogin,
   getUser
 } = require("./controllers/users_controller");
-const {
-  verifyToken
-} = require("./middlewares/middleware");
+const { verifyToken } = require("./middlewares/middleware");
+const path = require("path")
 
 dotenv.config();
 
@@ -23,7 +18,7 @@ const app = express();
 
 const PORT = process.env.PORT || 9000;
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header(
     "Access-Control-Allow-Headers",
@@ -36,9 +31,11 @@ app.use(express.static(__dirname + "/front"));
 
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL
@@ -111,24 +108,69 @@ client
 
 routes(app);
 
+app.get("/home",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "index.html"))
+})
+
+app.get("/about",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "about-us.html"))
+})
+
+app.get("/signin",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "sign-in.html"))
+})
+
+app.get("/signup",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "sign-up.html"))
+})
+
+app.get("/dashboard",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "userprofile.html"))
+})
+
+app.get("/ride-offers",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "ride-offers.html"))
+})
+
+app.get("/offer-ride",function(req,res){
+  res
+  .status(200)
+  .sendFile(path.join(__dirname, "front", "offer-ride.html"))
+})
+
+
+
+
 app.post(
   "/auth/signup",
   [
     check("first_name")
-    .isAlpha()
-    .withMessage("must be alphabets only")
-    .isLength({
-      min: 3,
-      max: 20
-    })
-    .withMessage("must be of 3 characters and above"),
+      .isAlpha()
+      .withMessage("must be alphabets only")
+      .isLength({
+        min: 3,
+        max: 20
+      })
+      .withMessage("must be of 3 characters and above"),
     check("email", "must be a valid email").isEmail(),
     check("phone_no", "must be a valid mobile number").isMobilePhone(),
     check("password")
-    .isLength({
-      min: 5
-    })
-    .withMessage("minimum length of 5")
+      .isLength({
+        min: 5
+      })
+      .withMessage("minimum length of 5")
   ],
   createUser
 );

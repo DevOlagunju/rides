@@ -4,7 +4,7 @@ const token = localStorage.getItem('token');
 
 //preventing unauthorised users from accessing the page
 if (!token) {
-  window.location.href = './signin.html';
+  window.location.href = '/signin';
 }
 
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
@@ -34,7 +34,7 @@ const createRideOffer = event => {
       console.log(data) 
       if (data.rideId) {
         alert("ride created successfully!");
-        window.location.href = "./userprofile.html";
+        window.location.href = "/dashboard";
       } else if (data.msg) {
         toastr.error(data.msg);
       } else {

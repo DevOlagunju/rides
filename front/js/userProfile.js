@@ -6,7 +6,7 @@ let dest_reporter = document.getElementById('dest_reporter');
 
 //preventing unauthorised users from accessing the page
 if (!token) {
-  window.location.href = "./signin.html";
+  window.location.href = "/signin";
 }
 
 let overlay = document.getElementById("overlay");
@@ -57,7 +57,7 @@ const logout = document.getElementById("logout");
 
 logout.addEventListener("click", function () {
   localStorage.clear();
-  window.location.href = "./sign-in.html";
+  window.location.href = "/signin";
 });
 
 document.querySelector("#nameBar").innerHTML = `${firstname.toUpperCase()}`;

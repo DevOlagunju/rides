@@ -27,7 +27,7 @@ const signUp = event => {
                 localStorage.setItem('token', res.token);
                 localStorage.setItem('userId', data.id);
                 localStorage.setItem('firstname', data.first_name);
-                window.location.href = "./sign-in.html";
+                window.location.href = "/signin";
                 alert("Account created successfully!")
               }
             })

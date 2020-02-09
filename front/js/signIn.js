@@ -29,7 +29,7 @@ const signIn = event => {
                   localStorage.setItem('token', res.token);
                   localStorage.setItem('userId', data.id);
                   localStorage.setItem('firstname', data.first_name);
-                  window.location.href = "./userprofile.html";
+                  window.location.href = "/dashboard";
                   //alert("logged in successfully!");
               } else {
                   toastr.error('Sorry, only a MEMBER can log in to this page');

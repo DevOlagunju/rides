@@ -4,55 +4,61 @@
 <title>Ride My Way | Offer Ride</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" media="screen" href="./styles/offer-ride.css" />
+<link rel="icon" type="image/png" href="image/favicon.png" sizes="16x16">
+<link rel="stylesheet" href="styles/reset.css" />
+<link rel="stylesheet" href="styles/shared/general.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="styles/offer-ride.css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 
 </head>
-<body>
-    <header>
-        <div class="container"> 
-            <div class="branding">
-                    <h1><span class="highlight">Ride My</span> Way</h1>
-
-                   
+    <body>
+        <div class="container">
+          <div class="header">
+            <div class="logo">
+              <span><em>RideMy</em>Way</span>
             </div>
-            <nav>
-                    <ul>
-                      <li><a id="nameBar"></a></li>
-                      <li><a href="./userprofile.html">Dashboard</a></li>
-                    </ul>
-            <nav>
-     </header>
-     
+            <div class="nav">
+                <a id="nameBar"></a>
+                <a href="/dashboard">Dashboard</a>
+          
+            </div>
+          </div>
 
      
-    <section>
-        <div class="for container" >
+        <div class="main" >
+            <div class="intro">
+                <div class="content">
     <form method="POST" id="registration-form">
          <h1>Offer ride</h1>
          <p>Please Fill In This Form To Offer a ride</p>
          <hr>
-         <div><label for="carname"><b>car Name</b></label>
+         <div class="form_row"><label for="carname"><b>car Name</b></label>
          <input type="text" placeholder="Enter car Name" id="carname" name="carname" required></div>
-         <div><label for="availableseat"><b>Available seats</b></label>
+         <div class="form_row"><label for="availableseat"><b>Available seats</b></label>
          <input type="text" placeholder="Enter no of seat" id="seats" name="availableseat" required></div>
-         <div><label for="pickuplocation"><b>Pick-up Location</b></label>
+         <div class="form_row"><label for="pickuplocation"><b>Pick-up Location</b></label>
          <input type="text" placeholder="Enter pickup" id="location" name="pickuplocation" required></div>
-         <div><label for="contact number"><b>Contact Number</b></label>
+         <div class="form_row"><label for="contact number"><b>Contact Number</b></label>
          <input type="tel" placeholder="Enter Number" id="number" name="contact number" required></div>
-         <div><label for="time"><b>Time</b></label>
+         <div class="form_row"><label for="time"><b>Time</b></label>
          <input type="time" placeholder="Enter Time" id="time" name="time" required></div>
-         <div><label for="destination"><b>Destination</b></label>
+         <div class="form_row"><label for="destination"><b>Destination</b></label>
          <input type="tel" placeholder="Enter destination" id="destination" name="destination" required></div>
 
          <button type="submit" class="signupbtn">submit</button>
          <hr>
         </form>
+
         </div>
-    </section>    
-   <footer>
-        <p>Ride My Way Carpooling inc copyright &copy;2019</p>
-    </footer>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Ride My Way Carpooling inc copyright &copy;2019</p>
+  </div>
+</div>
+       
+   
     <script src="./js/offerRide.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </body>

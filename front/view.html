@@ -1,66 +1,100 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Ride My Way | Offer Ride</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" media="screen" href="./styles/view.css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>    
-</head>
-<body>
-    <header>
-        <div class="container"> 
-            <div class="branding">
-                    <h1><span class="highlight">Ride My</span> Way</h1>
+  <head>
+    <title>Ride My Way | Offer Ride</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="image/favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/shared/general.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./styles/view.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <span><em>RideMy</em>Way</span>
+        </div>
+        <div class="nav">
+          <a id="nameBar"></a>
+          <a href="/dashboard">Dashboard</a>
+        </div>
+      </div>
 
-                   
-            </div>
-            <nav>
-                    <ul>
-                      <li><a id="nameBar"></a></li>
-                      <li><a href="./userProfile.html">Dashboard</a></li>
-                    </ul>
-            
-     </header>
-     <div class="container">
-    <form class="for"  id="registration-form">
-         <h1>Request A Ride</h1>
-         <p>Please Fill In This Form To Request a ride</p>
-         <hr>
-         <div><input type="hidden"  id="rideid" name="passenger" required></div>
-        <div><label for="passenger"><b>Passenger Name:</b></label>
-         <input type="text" placeholder="Enter  Name" id="passenger" name="passenger" required></div>
-         <div><label for="contact number"><b>Contact Number:</b></label>
-         <input type="tel" placeholder="Enter Number" id="number" name="contact number" required></div>
-         <hr>
-         <button type="submit"   class="signinbtn">submit</button>
-    </form>
-</div>
-<footer>
-    <p>Ride My Way Carpooling inc copyright &copy;2019</p>
-</footer>
-<script>
-    
-    const ride = id=> {
-    let length = id.length;
-    let pos = id.indexOf("=");
-    let result = id.substr(pos + 1, length);
+      <div class="main">
+        <div class="intro">
+          <div class="content">
+            <form method="Post" id="registration-form">
+              <h1>Request A Ride</h1>
+              <p>Please Fill In This Form To Request a ride</p>
+              <hr />
+              <div>
+                <input type="hidden" id="rideid" name="passenger" required />
+              </div>
+              <div class="form_row">
+                <label for="passenger"><b>Passenger Name:</b></label>
+                <input
+                  type="text"
+                  placeholder="Enter  Name"
+                  id="passenger"
+                  name="passenger"
+                  required
+                />
+              </div>
 
-    console.log(`The id is: ${id}`);
+              <div class="form_row">
+                <label for="contact number"><b>Contact Number:</b></label>
+                <input
+                  type="tel"
+                  placeholder="Enter Number"
+                  id="number"
+                  name="contact number"
+                  required
+                />
+              </div>
 
-    console.log(`The position is: ${pos}`);
+              <hr />
+              <button type="submit" class="signinbtn">submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
-    console.log(`The result is: ${result}`);
-    return result;
-  };
-  
-  const rideid = parseInt(ride(window.location.href));
-  document.getElementById("rideid").value = rideid;
-  console.log(rideid);
-  console.log(typeof rideid)
-</script>
+      <div class="footer">
+        <p>Ride My Way Carpooling inc copyright &copy;2019</p>
+      </div>
+    </div>
 
-<script src="./js/requestRide.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-</body>
+    <script>
+      const ride = id => {
+        let length = id.length;
+        let pos = id.indexOf("=");
+        let result = id.substr(pos + 1, length);
+
+        console.log(`The id is: ${id}`);
+
+        console.log(`The position is: ${pos}`);
+
+        console.log(`The result is: ${result}`);
+        return result;
+      };
+
+      const rideid = parseInt(ride(window.location.href));
+      document.getElementById("rideid").value = rideid;
+      console.log(rideid);
+      console.log(typeof rideid);
+    </script>
+
+    <script src="./js/requestRide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  </body>
 </html>

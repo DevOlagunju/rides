@@ -1,84 +1,12 @@
-body{
-  font-family:Arial,san-serif;
-  font-size:15px;
-  line-height:1.5;
-  padding:0;
-  margin:0;
-  background-color:#000080;
-}
-
-/*global*/
-.container{
-   width:80%;
-   margin:auto;
-   overflow:hidden
-}
 
 .shadow{
   background-color:#f0ffff;
 }
 
 /*header*/
-header{
-  background:#000080;
-  color:#ffff;
-  padding-top:30px;
-  min-height:70px;
-  border-top:#e8491d 10px solid;
-  border-bottom:#e8491d 10px solid;
-}
-
-header a{
-  color:#ffff;
-  text-decoration:none;
-  text-transform:uppercase;
-  font-size:16px;
-}
 
 
 
-header ul{
-  margin: 0px;
-  padding: 0px;
-}
-
-header li{
-  float:left;
-  padding: 0 20px 0 20px;
-
-}
-
-header li{
-  
-  display: inline;
-}
-
-header .branding{
-  float:left;   
- 
- }
- 
- header .branding{
-     margin:0;   
-    
-    }
- 
- header nav{
-     float:right;   
-    
-    }
- 
-
-header .highlight, header .current a{
-  color:#e8491d;
-  font-weight:bold;   
- 
- }
-
-header a:hover{
-  color:#cccccc;
-  font-weight: bold;
-}   
 
 
 input[type=text],input[type=number],input[type=tel],input[type=time] {
@@ -95,15 +23,18 @@ input[type=text]:focus,input[type=number]:focus,input[type=tel]:focus,input[type
   outline: none;
 }
 
-
-
-.container {
-  padding: 16px;
+#nameBar {
+  background-color: red;
+  color: white;
+  height: 25px;
+  font-weight: bold;
+  padding: 2px;
 }
 
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+  width: 30%;
 }
 
 
@@ -117,20 +48,7 @@ background-color:navy;
 }
 
 
-.container form {
-   
-  display :flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
- 
- 
-}
 
-.container form div  {
-  justify-content: center;
-  width:50%;   
-}
 
 .signin {
   background-color:navy;
@@ -152,42 +70,128 @@ background-color:navy;
   
 }
 
-footer{
-  padding:20px;
-  background-color:#000080;
-  color:#ffff;
-  text-align:center
-     
+.intro {
+  background-color: #353b48;
+  height: 100%;
 }
 
-footer p{
-  background:#ff0000;
-  color:#ffff;
+form h1 {
+padding-top: 50px;
+}
+
+.content {
+  height: 100%;
+  width: 450px;
+  margin: auto;
+  border: 0px solid red;
+  color: white;
   
 }
 
-@media(max-width:768px){
-header .branding,
-header nav,
-header nav li{
-    float:none;
-    text-align:center;
-    width:100%;
-    
+.content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0px solid #09f;
+  padding: 0 10px;
 }
-header nav a {
-    float: none;
-    display: block;
-    width: 100%;
-    text-align: center;
+
+.content h1,
+p {
+margin: 20px 0px;
+}
+
+.content form div {
+justify-content: center;
+width: 50%;
+}
+
+.content form div label {
+/* float:left;  */
+width: auto;
+}
+
+.footer {
+background-color: #7c4945;
+}
+
+.footer p {
+border: 1px solid rgba(255, 255, 255 0.4);
+display: flex;
+color: white;
+justify-content: center;
+margin: 8px 0 0 0;
+height: 20px;
+padding: 11px 0;
+background-color: #353b48;
+align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+
+  .header a {
+    margin-right: 5px;
+    font-size: 8px;
   }
 
-  .for {
-    overflow-x: auto;
-    display: block;
+  .footer p {
+    margin: 5px 0;
+    padding: 3px 3px;
+    font-size: 5px;
+    font-weight: bold;
+    
+  }
+
+}
+
+
+@media screen and (max-width: 414px) {
+  .par {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .terms {
+    font-size: 8px;
+    font-weight: bold;
+  }
+  
+  
+.content  {
+ 
+  width: 280px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 5px;
+  font-size: 10px;
+  padding: 0 15px;
+}
+
+.header>.logo>span>em {
+  font-size: 10px;
+}
+
+.header a {
+  margin-right: 7px;
+  font-size: 12px;
+}
+
+.footer p {
+
+  padding: 3px 0;
+  font-size: 8px;
+  font-weight: bold;
+
 }
 
 }
+
+
 
 
 
