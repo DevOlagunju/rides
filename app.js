@@ -4,18 +4,21 @@ const bodyParser = require("body-parser");
 const { check } = require("express-validator/check");
 const routes = require("./routes");
 const { Client } = require("pg");
+const mustacheExpress = require("mustache-express");
 const {
   createUser,
   userLogin,
   getUser
 } = require("./controllers/users_controller");
 const { verifyToken } = require("./middlewares/middleware");
-const path = require("path")
+const path = require("path");
 
 dotenv.config();
 
 const app = express();
-
+app.engine(".html", mustacheExpress());
+app.set("view engine", "html");
+app.set("views", __dirname + "/front");
 const PORT = process.env.PORT || 9000;
 
 app.use(function(req, res, next) {
@@ -108,50 +111,55 @@ client
 
 routes(app);
 
-app.get("/home",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "index.html"))
-})
+app.get("/home", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "index.html"));
+  res.status(200);
+  res.render("index", null);
+});
 
-app.get("/about",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "about-us.html"))
-})
+app.use("/view/:id", express.static(__dirname + "/front"));
+app.get("/view/:id", function(req, res) {
+  let id = req.params.id;
+  //res.status(200).sendFile(path.join(__dirname, "front", "view.html"));
+  res.status(200);
+  res.render("view", { rideid: id });
+});
 
-app.get("/signin",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "sign-in.html"))
-})
+app.get("/about", function(req, res) {
+  // res.status(200).sendFile(path.join(__dirname, "front", "about-us.html"));
+  res.status(200);
+  res.render("about-us", null);
+});
 
-app.get("/signup",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "sign-up.html"))
-})
+app.get("/signin", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "sign-in.html"));
+  res.status(200);
+  res.render("sign-in", null);
+});
 
-app.get("/dashboard",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "userprofile.html"))
-})
+app.get("/signup", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "sign-up.html"));
+  res.status(200);
+  res.render("sign-up", null);
+});
 
-app.get("/ride-offers",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "ride-offers.html"))
-})
+app.get("/dashboard", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "userprofile.html"));
+  res.status(200);
+  res.render("userprofile", null);
+});
 
-app.get("/offer-ride",function(req,res){
-  res
-  .status(200)
-  .sendFile(path.join(__dirname, "front", "offer-ride.html"))
-})
+app.get("/ride-offers", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "ride-offers.html"));
+  res.status(200);
+  res.render("ride-offers", null);
+});
 
-
-
+app.get("/offer-ride", function(req, res) {
+  //res.status(200).sendFile(path.join(__dirname, "front", "offer-ride.html"));
+  res.status(200);
+  res.render("offer-ride", null);
+});
 
 app.post(
   "/auth/signup",
