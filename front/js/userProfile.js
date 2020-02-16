@@ -199,14 +199,34 @@ const deleteRide = async id => {
 
 const renderRequesteData = (data, requestsTable) => {
   data.forEach(request => {
-    let rideRow = document.createElement("tr");
-    rideRow.innerHTML = `<th scope="row">${request.ride_id}</th>
-                          <td>${request.passenger_name}</td>
-                          <td>${request.phone_no}</td>
-                          <td>${request.status}</td>
+    // let rideRow = document.createElement("tr");
+    // rideRow.innerHTML = `<th scope="row">${request.ride_id}</th>
+    //                       <td>${request.passenger_name}</td>
+    //                       <td>${request.phone_no}</td>
+    //                       <td>${request.status}</td>
 
-                           `;
-    requestsTable.append(rideRow);
+    //                        `;
+    // requestsTable.append(rideRow);
+    
+      let tr = document.createElement("tr");
+      let th = document.createElement("th");
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+      let td3 = document.createElement("td");
+   
+     
+      th.innerText = request.ride_id;
+      td1.innerText = request.passenger_name;
+      td2.innerText = request.phone_no;
+      td3.innerText = request.status;
+
+      tr.appendChild(th);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    
+
+    requestsTable.appendChild(tr);
   });
 };
 

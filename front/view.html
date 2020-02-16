@@ -29,7 +29,7 @@
         <div class="intro">
           <div class="content">
             <form method="Post" id="registration-form">
-              <h1>Request A Ride {{rideid}}</h1>
+              <h1>Request A Ride</h1>
               <p>Please Fill In This Form To Request a ride</p>
               <hr />
               <div>
@@ -70,23 +70,23 @@
     </div>
 
     <script>
-      // const ride = id => {
-      //   let length = id.length;
-      //   let pos = id.indexOf("=");
-      //   let result = id.substr(pos + 1, length);
+      const ride = id => {
+        let length = id.length;
+        let pos = id.indexOf("=");
+        let result = id.substr(pos + 1, length);
 
-      //   console.log(`The id is: ${id}`);
+        console.log(`The id is: ${id}`);
 
-      //   console.log(`The position is: ${pos}`);
+        console.log(`The position is: ${pos}`);
 
-      //   console.log(`The result is: ${result}`);
-      //   return result;
-      // };
+        console.log(`The result is: ${result}`);
+        return result;
+      };
 
-      // const rideid = parseInt(ride(window.location.href));
-      // document.getElementById("rideid").value = rideid;
-      // console.log(rideid);
-      // console.log(typeof rideid);
+      const rideid = parseInt(ride(window.location.href));
+      document.getElementById("rideid").value = rideid;
+      console.log(rideid);
+      console.log(typeof rideid);
     </script>
 
     <script src="./js/requestRide.js"></script>
