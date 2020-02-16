@@ -213,12 +213,19 @@ const renderRequesteData = (data, requestsTable) => {
       let td1 = document.createElement("td");
       let td2 = document.createElement("td");
       let td3 = document.createElement("td");
-   
+      let status = request.status;
+      if(status === 1){
+        status = "Pending"
+      }else if (status===2){
+        status = "Accepted"
+      }else{
+        rejected
+      }
      
       th.innerText = request.ride_id;
       td1.innerText = request.passenger_name;
       td2.innerText = request.phone_no;
-      td3.innerText = request.status;
+      td3.innerText = status;
 
       tr.appendChild(th);
     tr.appendChild(td1);
